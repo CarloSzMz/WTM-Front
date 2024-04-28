@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>WTM</title>
+        <link rel="stylesheet" href="./styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="contenedor">
+            <div class="contenido">
+                <div class="wrapper">
+                    <img
+                        src="../img/logo_black.png"
+                        alt=""
+                        class="logo"
+                        dir="ltr"
+                    >
+                    <div class="opciones">
+                        <h1 class="bebas-neue-regular">Crea Tu Cuenta</h1>
+                        <input
+                            class="selector"
+                            type="text"
+                            placeholder="nombre*"
+                            id="input_nombre"
+                            required
+                        >
+                        <input
+                            class="selector"
+                            type="text"
+                            placeholder="email*"
+                            id="input_email"
+                            required
+                        >
+                        <input
+                            class="selector"
+                            type="password"
+                            placeholder="contraseña*"
+                            id="input_passw"
+                            required
+                            minlength="8"
+                        >
+                        <input
+                            class="selector"
+                            type="password"
+                            placeholder="repetir contraseña*"
+                            id="input_passw_confirm"
+                            required
+                            minlength="8"
+                        >
+                        <div class="contenedor-boton">
+                            <button class="btnLogin oswald-fuente" id="btnRegister">Confirmar</button>
+                        </div>
+                        <h6>
+                            ¿Ya tienes cuenta?
+                            <a href="./login.html" style="text-decoration: underline; color: black;">Inicia Sesión</a>
+                        </h6>
+                    </div>
+                </div>
+                <div class="footer">
+                    <h4>Siguenos!</h4>
+                    <ul class="redes-sociales">
+                        <li>
+                            <button class="icono-social">
+                                <a href="https://www.instagram.com">
+                                    <img src="../img/social/instagram.svg" alt="" class="redes-icons">
+                                </a>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="icono-social">
+                                <img src="../img/social/facebook.svg" alt="" class="redes-icons">
+                            </button>
+                        </li>
+                        <li>
+                            <button class="icono-social">
+                                <img src="../img/social/x-twitter.svg" alt="" class="redes-icons">
+                            </button>
+                        </li>
+                        <li>
+                            <button class="icono-social">
+                                <img src="../img/social/tiktok.svg" alt="" class="redes-icons">
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <figure class="muestra">
+                <img src="../img/register.jpg" alt="" class="background-image">
+            </figure>
+        </div>
+    </body>
+    <script src="./js/register.js"></script>
+    <!--    JQUERY CDN-->
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+</html>

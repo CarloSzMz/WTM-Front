@@ -1,0 +1,174 @@
+html {
+  background-color: #fff;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+body {
+  font-size: 1.6rem;
+  min-width: 320px;
+  direction: ltr;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+}
+
+.contenedor {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  flex-flow: row;
+}
+
+.contenido {
+  margin: 0px auto;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.wrapper {
+  width: 343px;
+  margin: 74px 0px 0px 103px;
+  padding: 0px;
+}
+
+.logo {
+  justify-content: flex-start;
+  user-select: none;
+  pointer-events: none;
+  position: static;
+  width: 400px;
+}
+
+.opciones {
+  width: 343px;
+  margin: 0px 0px 0px;
+  display: flex;
+  position: relative;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+}
+
+.selector {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  border-radius: 0.2rem;
+  overflow: visible;
+  padding-block: 1px;
+  padding-inline: 2px;
+  letter-spacing: normal;
+  word-spacing: normal;
+  margin-bottom: 0.5rem;
+}
+
+.contenedor-boton {
+  padding: 0px;
+  display: inline-block;
+  width: 100%;
+  max-width: 343px;
+}
+
+.btnLogin {
+  background-color: black;
+  color: white;
+  font-size: 22px;
+  font-weight: 400;
+  display: block;
+  position: static;
+  height: 55px;
+  border-radius: 5%;
+  width: 200px;
+  cursor: pointer;
+}
+
+.muestra {
+  width: 50%;
+  height: 100%;
+  margin: 0;
+  display: flex;
+}
+
+.background-image {
+  height: 100vh;
+  width: 101%;
+  object-fit: cover;
+  object-position: center 18%;
+}
+
+.footer {
+  border-top: 1px solid lightgray;
+  padding: 0px 76px 0px;
+  margin-top: 5px;
+}
+
+ul {
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+
+.redes-sociales {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: auto;
+  gap: 18px;
+  padding: 0px;
+  margin-bottom: 32px;
+}
+
+li {
+  list-style: none;
+}
+
+.icono-social {
+  border-radius: 50%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+}
+
+.redes-icons {
+  width: 18px;
+  height: 18px;
+  fill: none;
+}
+
+.bebas-neue-regular {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.oswald-fuente {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+@media only screen and (max-width: 961px) {
+  .muestra {
+    display: none;
+  }
+
+  .contenido{
+    width: 100%;
+  }
+
+  .footer {
+    width: 100%;
+    align-items: center;
+  }
+}
