@@ -191,7 +191,6 @@ function cargarProductosFilter(filter) {
 
 //CARGAR FILTRO CATEGORIAS
 function CargarFiltros() {
-
   // Verificar el valor y marcar el checkbox correspondiente
   if (FiltroCategoria === "sudaderas") {
     $("#sudaderasCheckbox").prop("checked", true);
@@ -208,18 +207,27 @@ function distribuirProductos() {
   var cadena = ``;
   productos.forEach((articulo) => {
     cadena += `
-    <div class="card m-2" style="width: 18rem;">
-        <img src="../img/productos/${articulo.url_img}" class="card-img-top imagen_categorias" alt="...">
+    <div class="card m-2" style="width: 18rem;" onclick="envioProductos(${articulo.id})">
+        <img src="../img/productos/${articulo.url_img}" class="card-img-top imagen_categorias" alt="..." >
         <div class="card-body">
             <p class="card-text">Articulo: ${articulo.name}.</p>
             <p class="card-text">Descripcion: ${articulo.description}.</p>
         </div>
+        <a class="navbar-brand" href="./detalle/detalle.html">detalle</a>
     </div>
     `;
   });
 
   $("#productosDiv").html(cadena);
 }
+
+//FUNCION QUE LLEVA AL DETALLE DE LOS PRODUCTOS
+function envioProductos(id) {
+  console.log(id);
+  sessionStorage.setItem("ProductoSelected", id);
+  window.location.replace("/productos/detalle/detalle.html")
+}
+
 
 //CAMBIO DE ICONOS AL DESPLEGAR FILTROS
 $(document).ready(function () {
