@@ -23,18 +23,26 @@ function cargarNav() {
   } else {
     $("#nav").append(
       `
-        <a class="nav-link active" href="/perfil/perfil.html">
-        <button class="navbar-toggler mx-2">
-            <i class="fa-solid fa-user text-light"></i>
-            </button>
-        </a>
+      <a class="nav-link active" href="/index.html">
+      <button class="navbar-toggler mx-2 d-flex flex-column align-items-center">
+        <i class="gg-home text-light mt-2"></i>
+        <span class="text-light text-center fs-6 mt-2">Inicio</span>
+      </button>
+    </a>
+
+    <a class="nav-link active" href="/perfil/perfil.html">
+      <button class="navbar-toggler mx-2 d-flex flex-column align-items-center">
+          <i class="fa-solid fa-user text-light"></i>
+          <span class="text-light text-center fs-6 mt-2">Perfil</span>
+      </button>
+    </a>
     `
     );
   }
 
   $("#nav").append(
     ` <button
-      class="navbar-toggler mx-2"
+      class="navbar-toggler mx-2 d-flex flex-column align-items-center"
       type="button"
       data-bs-toggle="offcanvas"
       data-bs-target="#offcanvasNavbar"
@@ -42,6 +50,7 @@ function cargarNav() {
       aria-label="Toggle navigation"
     >
     <i class="gg-shopping-cart text-light"></i>
+    <span class="text-light text-center fs-6 mt-2">Cesta</span>
     </button>`
   );
 }
@@ -213,7 +222,6 @@ function distribuirProductos() {
             <p class="card-text">Articulo: ${articulo.name}.</p>
             <p class="card-text">Descripcion: ${articulo.description}.</p>
         </div>
-        <a class="navbar-brand" href="./detalle/detalle.html">detalle</a>
     </div>
     `;
   });
@@ -225,9 +233,8 @@ function distribuirProductos() {
 function envioProductos(id) {
   console.log(id);
   sessionStorage.setItem("ProductoSelected", id);
-  window.location.replace("/productos/detalle/detalle.html")
+  window.location.replace("/productos/detalle/detalle.html");
 }
-
 
 //CAMBIO DE ICONOS AL DESPLEGAR FILTROS
 $(document).ready(function () {

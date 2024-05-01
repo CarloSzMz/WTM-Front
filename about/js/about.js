@@ -13,30 +13,32 @@ function cargarDatos() {
 function cargarNav() {
   if (tokenusu == null) {
     $("#nav").append(
-      `<a class="nav-link active mx-2" aria-current="page" href="../login & register/login.html">Iniciar Sesión</a>`
+      `<a class="nav-link active mx-2 text-light" aria-current="page" href="./login & register/login.html">Iniciar Sesión</a>`
     );
     $("#bodyCarrito").append(`<h4>Inicia Sesión para ver tu carrito</h4>`);
   } else {
     $("#nav").append(
-      `<button class="navbar-toggler mx-2">
-        <a class="nav-link active" href="../perfil/perfil.html">
-            <i class="fa-solid fa-user"></i>
-        </a>
-    </button>`
+      `
+      <a class="nav-link active" href="./perfil/perfil.html">
+      <button class="navbar-toggler mx-2">
+          <i class="fa-solid fa-user text-light"></i>
+          </button>
+      </a>
+  `
     );
   }
 
   $("#nav").append(
     ` <button
-      class="navbar-toggler mx-2"
-      type="button"
-      data-bs-toggle="offcanvas"
-      data-bs-target="#offcanvasNavbar"
-      aria-controls="offcanvasNavbar"
-      aria-label="Toggle navigation"
-    >
-      <i class="fa-solid fa-cart-shopping"></i>
-    </button>`
+    class="navbar-toggler mx-2"
+    type="button"
+    data-bs-toggle="offcanvas"
+    data-bs-target="#offcanvasNavbar"
+    aria-controls="offcanvasNavbar"
+    aria-label="Toggle navigation"
+  >
+  <i class="gg-shopping-cart text-light"></i>
+  </button>`
   );
 }
 
@@ -141,6 +143,5 @@ function deleteprodCarritoNose() {
     });
   });
 }
-
 
 window.onload = cargarDatos();
