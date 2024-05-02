@@ -2,6 +2,7 @@ let main = document.getElementById("main");
 let tokenusu = sessionStorage.getItem("tokenusu");
 let CategoriaCamisteas = document.getElementById("CategoriaCamisetas");
 let CategoriaSudaderas = document.getElementById("CategoriaSudaderas");
+let url_site = `http://localhost:8000`;
 
 console.log("token usuario: " + tokenusu);
 
@@ -48,7 +49,7 @@ function cargarCarrito() {
   let cad = ``;
   $.ajax({
     type: "GET",
-    url: `http://localhost:8000/api/ver_carrito`,
+    url: url_site + `/api/ver_carrito`,
     dataType: "json",
     headers: {
       Authorization: "Bearer " + tokenusu,
@@ -129,7 +130,7 @@ function deleteprodCarritoNose() {
     btnBorrardelCarro.addEventListener("click", () => {
       $.ajax({
         type: "DELETE",
-        url: `http://localhost:8000/api/eliminarProdCarrito`,
+        url: url_site + `/api/eliminarProdCarrito`,
         dataType: "json",
         headers: {
           Authorization: "Bearer " + tokenusu,
@@ -151,7 +152,6 @@ CategoriaCamisteas.addEventListener("click", () => {
   console.log("camisetas");
   sessionStorage.setItem("FiltroCategoria", "camisetas");
   window.location.replace("./productos/productos.html");
-
 });
 
 CategoriaSudaderas.addEventListener("click", () => {

@@ -6,6 +6,8 @@ let Detallesproducto = [];
 let btnCesta = document.getElementById("btnCesta");
 let inputCantidad = document.getElementById("cantidad");
 
+let url_site = "http://localhost:8000";
+
 //LLAMA A LAS FUNCIONES
 function cargarDatos() {
   cargarNav();
@@ -47,7 +49,7 @@ function cargarNav() {
       cantidad = inputCantidad.value;
       $.ajax({
         type: "POST",
-        url: `http://localhost:8000/api/add_carrito`,
+        url: url_site + `/api/add_carrito`,
         dataType: "json",
         headers: {
           Authorization: "Bearer " + tokenusu,
@@ -84,7 +86,7 @@ function cargarNav() {
 function cargarCarrito() {
   $.ajax({
     type: "GET",
-    url: `http://localhost:8000/api/ver_carrito`,
+    url: url_site + `/api/ver_carrito`,
     dataType: "json",
     headers: {
       Authorization: "Bearer " + tokenusu,
@@ -108,7 +110,7 @@ function deleteprodCarritoNose() {
     btnBorrardelCarro.addEventListener("click", () => {
       $.ajax({
         type: "DELETE",
-        url: `http://localhost:8000/api/eliminarProdCarrito`,
+        url: url_site+`/api/eliminarProdCarrito`,
         dataType: "json",
         headers: {
           Authorization: "Bearer " + tokenusu,
@@ -212,7 +214,7 @@ function decrement() {
 function cargarProducto() {
   $.ajax({
     type: "GET",
-    url: `http://localhost:8000/api/Detalleproducto`,
+    url: url_site+`/api/Detalleproducto`,
     dataType: "json",
     data: {
       id: ProductoSelected,

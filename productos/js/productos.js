@@ -4,6 +4,7 @@ console.log("Categoria Seleccionada: " + FiltroCategoria);
 
 let productos = [];
 let carrito = [];
+let url_site = 'http://localhost:8000'
 
 //LLAMA A LAS FUNCIONES
 function cargarDatos() {
@@ -59,7 +60,7 @@ function cargarNav() {
 function cargarCarrito() {
   $.ajax({
     type: "GET",
-    url: `http://localhost:8000/api/ver_carrito`,
+    url: url_site+`/api/ver_carrito`,
     dataType: "json",
     headers: {
       Authorization: "Bearer " + tokenusu,
@@ -83,7 +84,7 @@ function deleteprodCarritoNose() {
     btnBorrardelCarro.addEventListener("click", () => {
       $.ajax({
         type: "DELETE",
-        url: `http://localhost:8000/api/eliminarProdCarrito`,
+        url: url_site+`/api/eliminarProdCarrito`,
         dataType: "json",
         headers: {
           Authorization: "Bearer " + tokenusu,
@@ -167,7 +168,7 @@ function carritoOffCanvas() {
 function cargarProductos() {
   $.ajax({
     type: "POST",
-    url: `http://localhost:8000/api/productos`,
+    url: url_site+`/api/productos`,
     dataType: "json",
     data: {
       filter: null,
@@ -184,7 +185,7 @@ function cargarProductos() {
 function cargarProductosFilter(filter) {
   $.ajax({
     type: "POST",
-    url: `http://localhost:8000/api/productos`,
+    url: url_site+`/api/productos`,
     dataType: "json",
     data: {
       filter: filter,

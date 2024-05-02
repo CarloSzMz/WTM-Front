@@ -5,7 +5,7 @@ let pedidos = [];
 let btnLogout = document.getElementById("btnlogout");
 let btnCompra = document.getElementById("confirmarCompra");
 let divcarrito = document.getElementById("productosCarrito");
-
+let url_site = `http://localhost:8000`;
 
 //console.log(tokenusu);
 
@@ -45,7 +45,7 @@ function cargarNav() {
 function cargarCarrito() {
   $.ajax({
     type: "GET",
-    url: `http://localhost:8000/api/ver_carrito`,
+    url: url_site + `/api/ver_carrito`,
     dataType: "json",
     headers: {
       Authorization: "Bearer " + tokenusu,
@@ -129,7 +129,7 @@ function carritoOffCanvas() {
 function cargarPedidos() {
   $.ajax({
     type: "GET",
-    url: `http://localhost:8000/api/ver_pedidos`,
+    url: url_site + `/api/ver_pedidos`,
     dataType: "json",
     headers: {
       Authorization: "Bearer " + tokenusu,
@@ -252,7 +252,7 @@ function llenarModalPedido(idPedido) {
   cadenapedido = ``;
   $.ajax({
     type: "POST",
-    url: `http://localhost:8000/api/ver_pedido_especifico`,
+    url: url_site + `/api/ver_pedido_especifico`,
     dataType: "json",
     headers: {
       Authorization: "Bearer " + tokenusu,
@@ -380,7 +380,7 @@ function deleteprodCarritoNose() {
     btnBorrardelCarro.addEventListener("click", () => {
       $.ajax({
         type: "DELETE",
-        url: `http://localhost:8000/api/eliminarProdCarrito`,
+        url: url_site + `/api/eliminarProdCarrito`,
         dataType: "json",
         headers: {
           Authorization: "Bearer " + tokenusu,
@@ -401,7 +401,7 @@ function deleteprodCarritoNose() {
 function cargarPERFIL() {
   $.ajax({
     type: "GET",
-    url: `http://localhost:8000/api/get_user`,
+    url: url_site + `/api/get_user`,
     dataType: "json",
     headers: {
       Authorization: "Bearer " + tokenusu,
@@ -494,7 +494,7 @@ function rellenarPerfil() {
 
     $.ajax({
       type: "PUT",
-      url: `http://127.0.0.1:8000/api/update_user`,
+      url: url_site + `/api/update_user`,
       dataType: "json",
       headers: {
         Authorization: "Bearer " + tokenusu,
@@ -570,7 +570,7 @@ function rellenarCambioPerfil() {
 
     $.ajax({
       type: "PUT",
-      url: `http://127.0.0.1:8000/api/update_user`,
+      url: url_site + `/api/update_user`,
       dataType: "json",
       headers: {
         Authorization: "Bearer " + tokenusu,
@@ -672,7 +672,7 @@ function rellenarDivCarrito(productos) {
         try {
           $.ajax({
             type: "PUT",
-            url: `http://localhost:8000/api/update_carrito`,
+            url: url_site + `/api/update_carrito`,
             dataType: "json",
             headers: {
               Authorization: "Bearer " + tokenusu,
@@ -750,7 +750,7 @@ btnCompra.addEventListener("click", (event) => {
   if (confirmacion) {
     $.ajax({
       type: "POST",
-      url: `http://localhost:8000/api/create_pedido`,
+      url: url_site + `/api/create_pedido`,
       dataType: "json",
       headers: {
         Authorization: "Bearer " + tokenusu,
@@ -775,7 +775,7 @@ btnLogout.addEventListener("click", () => {
 
   $.ajax({
     type: "GET",
-    url: `http://localhost:8000/api/logout`,
+    url: url_site + `/api/logout`,
     dataType: "json",
     headers: {
       Authorization: "Bearer " + tokenusu,

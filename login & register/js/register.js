@@ -5,6 +5,8 @@ let input_nombre = document.getElementById("input_nombre");
 
 let btnRegister = document.getElementById("btnRegister");
 
+let url_site = `http://localhost:8000`;
+
 btnRegister.addEventListener("click", (event) => {
   event.preventDefault();
   console.log(input_email.value);
@@ -16,7 +18,7 @@ btnRegister.addEventListener("click", (event) => {
 
     $.ajax({
       type: "POST",
-      url: `http://localhost:8000/api/register`,
+      url: url_site + `/api/register`,
       dataType: "json",
       data: {
         name: input_nombre.value,

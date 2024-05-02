@@ -1,6 +1,7 @@
 let input_email = document.getElementById("input_email");
 let input_passw = document.getElementById("input_passw");
 let btnLogin = document.getElementById("btnLogin");
+let url_site = `http://localhost:8000`;
 
 btnLogin.addEventListener("click", (event) => {
   event.preventDefault();
@@ -12,7 +13,7 @@ btnLogin.addEventListener("click", (event) => {
 
   $.ajax({
     type: "POST",
-    url: `http://localhost:8000/api/login`,
+    url: url_site + `/api/login`,
     dataType: "json",
     data: {
       email: email,
@@ -24,7 +25,7 @@ btnLogin.addEventListener("click", (event) => {
         // alert('Datos incorrectos - Intente de nuevo para continuar');
         location.reload();
       } else {
-       // console.log(response.access_token);
+        // console.log(response.access_token);
         sessionStorage.setItem("tokenusu", response.access_token);
 
         //console.log(sessionStorage.getItem("tokenusu"));
