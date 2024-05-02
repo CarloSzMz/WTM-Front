@@ -23,8 +23,9 @@ function cargarNav() {
     $("#nav").append(
       `
       <a class="nav-link active" href="./perfil/perfil.html">
-      <button class="navbar-toggler mx-2">
+      <button class="navbar-toggler mx-2 d-flex flex-column align-items-center">
           <i class="fa-solid fa-user text-light"></i>
+          <span class="text-light text-center fs-6 mt-2">Perfil</span>
           </button>
       </a>
   `
@@ -33,7 +34,7 @@ function cargarNav() {
 
   $("#nav").append(
     ` <button
-    class="navbar-toggler mx-2"
+    class="navbar-toggler mx-2 d-flex flex-column align-items-center"
     type="button"
     data-bs-toggle="offcanvas"
     data-bs-target="#offcanvasNavbar"
@@ -41,6 +42,7 @@ function cargarNav() {
     aria-label="Toggle navigation"
   >
   <i class="gg-shopping-cart text-light"></i>
+  <span class="text-light text-center fs-6 mt-2">Cesta</span>
   </button>`
   );
 }
