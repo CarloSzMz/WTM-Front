@@ -321,23 +321,23 @@ function llenarModalPedido(idPedido) {
                    2
                  )}€</td>
                  <td class="align-bottom text-secondary">21,00%</td>
-                 <td class="align-bottom">${TotalArticulo}€</td>
+                 <td class="align-bottom">${TotalArticulo.toFixed(2)}€</td>
                 </tr>
                 `;
       });
       cadenapedido += `
                 <tr>
                   <td style="padding-right: 30px"><strong><span class="float-end">TOTAL</span></strong></td>
-                  <td>${totalsinIVA}€</td>
+                  <td>${totalsinIVA.toFixed(2)}€</td>
                   <td></td>
-                  <td>${pedido.total_price}€</td>
+                  <td>${pedido.total_price.toFixed(2)}€</td>
                 </tr>
                 <tr>
                   <td style="padding-right: 30px"><strong> <span class="float-end">IMPORTE TOTAL </span></strong>
                   </br><span class="float-end text-secondary">(*IVA incl.)</span></td>
                   <td></td>
                   <td></td>
-                  <td class="fs-4"><strong> ${pedido.total_price}€</strong></td>
+                  <td class="fs-4"><strong> ${pedido.total_price.toFixed(2)}€</strong></td>
                 </tr>      
 </table></div></div>
 `;
