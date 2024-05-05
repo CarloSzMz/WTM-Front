@@ -4,7 +4,7 @@ console.log("Categoria Seleccionada: " + FiltroCategoria);
 
 let productos = [];
 let carrito = [];
-let url_site = 'http://localhost:8000'
+let url_site = "http://localhost:8000";
 
 //LLAMA A LAS FUNCIONES
 function cargarDatos() {
@@ -16,31 +16,37 @@ function cargarDatos() {
 }
 
 function cargarNav() {
+
+  //Añadir btn inicio
+  $("#nav").append(
+    `
+    <a class="nav-link active" href="/index.html">
+    <button class="navbar-toggler mx-2 d-flex flex-column align-items-center">
+      <i class="gg-home text-light mt-2"></i>
+      <span class="text-light text-center fs-6 mt-2">Inicio</span>
+    </button>
+  </a>`
+  );
+  //comprobar token acceso
   if (tokenusu == null) {
     $("#nav").append(
-      `<a class="nav-link active mx-2 text-light" aria-current="page" href="/login & register/login.html">Iniciar Sesión</a>`
+      `<a class="nav-link active mx-2 text-light" aria-current="page" href="/login & register/login.html">
+      <button class="navbar-toggler mx-2 d-flex flex-column align-items-center">
+        <span class="text-light text-center fs-6 mt-2">Iniciar Sesión</span>
+      </button>
+    </a>`
     );
     $("#bodyCarrito").append(`<h4>Inicia Sesión para ver tu carrito</h4>`);
   } else {
-    $("#nav").append(
-      `
-      <a class="nav-link active" href="/index.html">
-      <button class="navbar-toggler mx-2 d-flex flex-column align-items-center">
-        <i class="gg-home text-light mt-2"></i>
-        <span class="text-light text-center fs-6 mt-2">Inicio</span>
-      </button>
-    </a>
-
+    $("#nav").append(`
     <a class="nav-link active" href="/perfil/perfil.html">
       <button class="navbar-toggler mx-2 d-flex flex-column align-items-center">
           <i class="fa-solid fa-user text-light"></i>
           <span class="text-light text-center fs-6 mt-2">Perfil</span>
       </button>
     </a>
-    `
-    );
+    `);
   }
-
   $("#nav").append(
     ` <button
       class="navbar-toggler mx-2 d-flex flex-column align-items-center"
@@ -60,7 +66,7 @@ function cargarNav() {
 function cargarCarrito() {
   $.ajax({
     type: "GET",
-    url: url_site+`/api/ver_carrito`,
+    url: url_site + `/api/ver_carrito`,
     dataType: "json",
     headers: {
       Authorization: "Bearer " + tokenusu,
@@ -84,7 +90,7 @@ function deleteprodCarritoNose() {
     btnBorrardelCarro.addEventListener("click", () => {
       $.ajax({
         type: "DELETE",
-        url: url_site+`/api/eliminarProdCarrito`,
+        url: url_site + `/api/eliminarProdCarrito`,
         dataType: "json",
         headers: {
           Authorization: "Bearer " + tokenusu,
@@ -168,7 +174,7 @@ function carritoOffCanvas() {
 function cargarProductos() {
   $.ajax({
     type: "POST",
-    url: url_site+`/api/productos`,
+    url: url_site + `/api/productos`,
     dataType: "json",
     data: {
       filter: null,
@@ -185,7 +191,7 @@ function cargarProductos() {
 function cargarProductosFilter(filter) {
   $.ajax({
     type: "POST",
-    url: url_site+`/api/productos`,
+    url: url_site + `/api/productos`,
     dataType: "json",
     data: {
       filter: filter,
@@ -220,8 +226,8 @@ function distribuirProductos() {
     <div class="card m-2" style="width: 18rem;" onclick="envioProductos(${articulo.id})">
         <img src="../img/productos/${articulo.url_img}" class="card-img-top imagen_categorias" alt="..." >
         <div class="card-body">
-            <p class="card-text">Articulo: ${articulo.name}.</p>
-            <p class="card-text">Descripcion: ${articulo.description}.</p>
+            <p class="card-text">${articulo.name}</p>
+            <p class="card-text">${articulo.description}</p>
         </div>
     </div>
     `;

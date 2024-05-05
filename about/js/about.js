@@ -14,7 +14,11 @@ function cargarDatos() {
 function cargarNav() {
   if (tokenusu == null) {
     $("#nav").append(
-      `<a class="nav-link active mx-2 text-light" aria-current="page" href="./login & register/login.html">Iniciar Sesión</a>`
+      `<a class="nav-link active mx-2 text-light" aria-current="page" href="/login & register/login.html">
+        <button class="navbar-toggler mx-2 d-flex flex-column align-items-center">
+          <span class="text-light text-center fs-6 mt-2">Iniciar Sesión</span>
+        </button>
+      </a>`
     );
     $("#bodyCarrito").append(`<h4>Inicia Sesión para ver tu carrito</h4>`);
   } else {

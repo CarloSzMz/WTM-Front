@@ -18,9 +18,24 @@ function cargarDatos() {
 }
 
 function cargarNav() {
+  //Añadir btn inicio
+  $("#nav").append(
+    `
+    <a class="nav-link active" href="/index.html">
+      <button class="navbar-toggler mx-2 d-flex flex-column align-items-center">
+        <i class="gg-home text-light mt-2"></i>
+        <span class="text-light text-center fs-6 mt-2">Inicio</span>
+      </button>
+    </a>`
+  );
+
   if (tokenusu == null) {
     $("#nav").append(
-      `<a class="nav-link active mx-2 text-light" aria-current="page" href="/login & register/login.html">Iniciar Sesión</a>`
+      `<a class="nav-link active mx-2 text-light" aria-current="page" href="/login & register/login.html">
+      <button class="navbar-toggler mx-2 d-flex flex-column align-items-center">
+        <span class="text-light text-center fs-6 mt-2">Iniciar Sesión</span>
+      </button>
+    </a>`
     );
     $("#bodyCarrito").append(`<h4>Inicia Sesión para ver tu carrito</h4>`);
     $("#btnCesta").append(
@@ -110,7 +125,7 @@ function deleteprodCarritoNose() {
     btnBorrardelCarro.addEventListener("click", () => {
       $.ajax({
         type: "DELETE",
-        url: url_site+`/api/eliminarProdCarrito`,
+        url: url_site + `/api/eliminarProdCarrito`,
         dataType: "json",
         headers: {
           Authorization: "Bearer " + tokenusu,
@@ -214,7 +229,7 @@ function decrement() {
 function cargarProducto() {
   $.ajax({
     type: "GET",
-    url: url_site+`/api/Detalleproducto`,
+    url: url_site + `/api/Detalleproducto`,
     dataType: "json",
     data: {
       id: ProductoSelected,
