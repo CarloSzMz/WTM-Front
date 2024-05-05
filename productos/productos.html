@@ -16,7 +16,7 @@
         <link href="https://unpkg.com/css.gg@2.0.0/icons/css/arrow-down.css" rel="stylesheet">
         <link href="https://unpkg.com/css.gg@2.0.0/icons/css/arrow-up.css" rel="stylesheet">
         <link href="https://unpkg.com/css.gg@2.0.0/icons/css/awards.css" rel="stylesheet">
-        <link href='https://unpkg.com/css.gg@2.0.0/icons/css/home.css' rel='stylesheet'>
+        <link href="https://unpkg.com/css.gg@2.0.0/icons/css/home.css" rel="stylesheet">
         <!--Custom css-->
         <link rel="stylesheet" href="../styles/styles.css">
     </head>
@@ -158,9 +158,22 @@
                     </ul>
                 </div>
             </nav>
-            <main class="container d-flex flex-row" id="productosDiv"></main>
+            <main class="container d-flex flex-column h-100">
+                <div class="container w-100 h-50"  id="mostrarCamisetas">
+                    <h1>Camiestas</h1>
+                    <div id="productosCamisetasDiv" class="d-flex flex-row"></div>
+                </div>
+                <div class="container w-100 h-50" id="mostrarSudaderas">
+                    <h1>Sudaderas</h1>
+                    <div id="productosSudaderasDiv" class="d-flex flex-row"></div>
+                </div>
+            </main>
+            <br>
+            <br>
+            <br>
+            <br>
         </div>
-        <footer class="border-top bg-dark text-secondary">
+        <footer class="border-top bg-dark text-secondary mt-5">
             <div class="container mt-5">
                 <div class="row justify-content-center">
                     <div class="col-md-12 text-center">

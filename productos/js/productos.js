@@ -3,20 +3,23 @@ let FiltroCategoria = sessionStorage.getItem("FiltroCategoria");
 console.log("Categoria Seleccionada: " + FiltroCategoria);
 
 let productos = [];
+let productosCamisteas = [];
+let productosSudaderas = [];
 let carrito = [];
 let url_site = "http://localhost:8000";
 
 //LLAMA A LAS FUNCIONES
 function cargarDatos() {
   cargarNav();
+  cargarProductos();
   CargarFiltros();
+  //CargarFiltros();
   if (tokenusu != null) {
     cargarCarrito();
   }
 }
 
 function cargarNav() {
-
   //Añadir btn inicio
   $("#nav").append(
     `
@@ -182,25 +185,21 @@ function cargarProductos() {
     success: function (response) {
       data = JSON.parse(JSON.stringify(response));
       productos = data.data;
-      console.log(productos);
-      distribuirProductos();
-    },
-  });
-}
 
-function cargarProductosFilter(filter) {
-  $.ajax({
-    type: "POST",
-    url: url_site + `/api/productos`,
-    dataType: "json",
-    data: {
-      filter: filter,
-    },
-    success: function (response) {
-      data = JSON.parse(JSON.stringify(response));
-      productos = data.data;
-      console.log(productos);
-      distribuirProductos();
+      // Filtrar los productos en base al category_id
+      productos.forEach(function (producto) {
+        if (producto.category_id === 1) {
+          productosCamisteas.push(producto);
+        } else if (producto.category_id === 2) {
+          productosSudaderas.push(producto);
+        }
+      });
+
+      console.log("Camiestas: ", productosCamisteas);
+      console.log("Sudaderas: ", productosSudaderas);
+
+      distribuirProductosCamiestas();
+      distribuirProductosSudaderas();
     },
   });
 }
@@ -210,30 +209,43 @@ function CargarFiltros() {
   // Verificar el valor y marcar el checkbox correspondiente
   if (FiltroCategoria === "sudaderas") {
     $("#sudaderasCheckbox").prop("checked", true);
-    cargarProductosFilter("sudaderas");
+    $("#mostrarSudaderas").removeClass("d-none");
+    $("#mostrarCamisetas").addClass("d-none");
   } else if (FiltroCategoria === "camisetas") {
     $("#camisetasCheckbox").prop("checked", true);
-    cargarProductosFilter("camisetas");
+    $("#mostrarSudaderas").addClass("d-none");
+    $("#mostrarCamisetas").removeClass("d-none");
   } else if (FiltroCategoria === null) {
-    cargarProductos();
+    console.log("nada");
+    $("#mostrarSudaderas").removeClass("d-none");
+    $("#mostrarCamisetas").removeClass("d-none");
   }
 }
 
-function distribuirProductos() {
+function distribuirProductosCamiestas() {
   var cadena = ``;
-  productos.forEach((articulo) => {
+  productosCamisteas.forEach((articulo) => {
     cadena += `
     <div class="card m-2" style="width: 18rem;" onclick="envioProductos(${articulo.id})">
         <img src="../img/productos/${articulo.url_img}" class="card-img-top imagen_categorias" alt="..." >
-        <div class="card-body">
-            <p class="card-text">${articulo.name}</p>
-            <p class="card-text">${articulo.description}</p>
-        </div>
     </div>
     `;
   });
 
-  $("#productosDiv").html(cadena);
+  $("#productosCamisetasDiv").html(cadena);
+}
+
+function distribuirProductosSudaderas() {
+  var cadena = ``;
+  productosSudaderas.forEach((articulo) => {
+    cadena += `
+    <div class="card m-2" style="width: 18rem;" onclick="envioProductos(${articulo.id})">
+        <img src="../img/productos/${articulo.url_img}" class="card-img-top imagen_categorias" alt="..." >
+    </div>
+    `;
+  });
+
+  $("#productosSudaderasDiv ").html(cadena);
 }
 
 //FUNCION QUE LLEVA AL DETALLE DE LOS PRODUCTOS
@@ -268,27 +280,32 @@ $(document).ready(function () {
   });
 });
 
-// Evento change para los checkboxes de sudaderas y camisetas
-$("#sudaderasCheckbox, #camisetasCheckbox").change(function () {
-  // Actualizar el valor de FiltroCategoria en sessionStorage
-  if (
-    $("#sudaderasCheckbox").is(":checked") &&
-    !$("#camisetasCheckbox").is(":checked")
-  ) {
-    sessionStorage.setItem("FiltroCategoria", "sudaderas");
-    cargarProductosFilter("sudaderas");
-  } else if (
-    !$("#sudaderasCheckbox").is(":checked") &&
-    $("#camisetasCheckbox").is(":checked")
-  ) {
-    sessionStorage.setItem("FiltroCategoria", "camisetas");
-    cargarProductosFilter("camisetas");
-  } else {
-    // Si ambos checkboxes están seleccionados o ninguno está seleccionado, establecer sessionStorage a null
-    sessionStorage.removeItem("FiltroCategoria");
-    // Llamar a la función cargarProductos
-    cargarProductos();
-  }
+$(document).ready(function () { 
+  // Evento change para los checkboxes de sudaderas y camisetas
+  $("#sudaderasCheckbox, #camisetasCheckbox").change(function () {
+    // Actualizar el valor de FiltroCategoria en sessionStorage
+    if (
+      $("#sudaderasCheckbox").is(":checked") &&
+      !$("#camisetasCheckbox").is(":checked")
+    ) {
+      sessionStorage.setItem("FiltroCategoria", "sudaderas");
+      console.log("click en sudaderas");
+      $("#mostrarSudaderas").removeClass("d-none");
+      $("#mostrarCamisetas").addClass("d-none");
+    } else if (
+      !$("#sudaderasCheckbox").is(":checked") &&
+      $("#camisetasCheckbox").is(":checked")
+    ) {
+      console.log("click en camisetas");
+      sessionStorage.setItem("FiltroCategoria", "camisetas");
+      $("#mostrarCamisetas").removeClass("d-none");
+      $("#mostrarSudaderas").addClass("d-none");
+    } else {
+      // Si ambos checkboxes están seleccionados o ninguno está seleccionado, establecer sessionStorage a null
+      sessionStorage.removeItem("FiltroCategoria");
+      $("#mostrarCamisetas").removeClass("d-none");
+      $("#mostrarSudaderas").removeClass("d-none");
+    }
+  });
 });
-
 window.onload = cargarDatos();
