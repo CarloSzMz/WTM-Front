@@ -44,13 +44,6 @@ function cargarNav() {
   } else {
     $("#nav").append(
       `
-        <a class="nav-link active" href="/index.html">
-          <button class="navbar-toggler mx-2 d-flex flex-column align-items-center">
-            <i class="gg-home text-light mt-2"></i>
-            <span class="text-light text-center fs-6 mt-2">Inicio</span>
-          </button>
-        </a>
-
         <a class="nav-link active" href="/perfil/perfil.html">
           <button class="navbar-toggler mx-2 d-flex flex-column align-items-center">
               <i class="fa-solid fa-user text-light"></i>

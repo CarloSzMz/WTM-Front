@@ -172,8 +172,13 @@ function cargarTablaPedidos() {
   let cadena = ``;
   if (pedidos.length == 0) {
     $("#pedidosusuario").append(
-      ` <i class="fa-solid fa-rotate-right"></i>
-      <p>Aún no has hecho ningun pedido</p>`
+      `<div class="d-flex flex-column align-items-center justify-content-center mt-2">
+        <button class="btn btn-dark " style="border-radius: 50%; width: 50px; height: 50px; pointer-events: none;">
+          <i class="fa-solid fa-rotate-right text-light"></i>
+        </button>
+        <h5 class="mt-2">Aún no has hecho ningun pedido</h5>
+      </div>
+     `
     );
   } else {
     cadena += `
@@ -597,8 +602,8 @@ function rellenarDivCarrito(productos) {
   if (productos == 0) {
     cadena += `
     <div class="d-flex flex-column align-items-center mt-2">
-    <button class="btn btn-light " style="border-radius: 50%; width: 50px; height: 50px; pointer-events: none;">
-         <i class="fa-solid fa-magnifying-glass"></i>
+    <button class="btn btn-dark " style="border-radius: 50%; width: 50px; height: 50px; pointer-events: none;">
+         <i class="fa-solid fa-magnifying-glass text-light"></i>
       </button>
       <h5>Tu carrito está vacío</h5>
       <button class="btn btn-info rounded-3">
