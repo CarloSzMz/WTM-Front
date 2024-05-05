@@ -53,26 +53,6 @@ function cargarNav() {
       `
     );
     $("#btnCesta").append(`<strong>Añadir a la cesta</strong>`);
-    btnCesta.addEventListener("click", () => {
-      cantidad = inputCantidad.value;
-      $.ajax({
-        type: "POST",
-        url: url_site + `/api/add_carrito`,
-        dataType: "json",
-        headers: {
-          Authorization: "Bearer " + tokenusu,
-        },
-        data: {
-          article_id: ProductoSelected,
-          quantity: cantidad,
-        },
-        success: function (response) {
-          console.log(response);
-          //sessionStorage.removeItem("ProductoSelected");
-          window.location.replace("/productos/productos.html");
-        },
-      });
-    });
   }
 
   $("#nav").append(
@@ -89,6 +69,32 @@ function cargarNav() {
       </button>`
   );
 }
+
+//LISTENER PARA AÑADIR PROD. A LA CESTA
+btnCesta.addEventListener("click", () => {
+  cantidad = inputCantidad.value;
+  if (cantidad > Detallesproducto[0].quantity) {
+    $('#modalAviso').modal('show'); // Mostrar el modal
+  } else {
+    $.ajax({
+      type: "POST",
+      url: url_site + `/api/add_carrito`,
+      dataType: "json",
+      headers: {
+        Authorization: "Bearer " + tokenusu,
+      },
+      data: {
+        article_id: ProductoSelected,
+        quantity: cantidad,
+      },
+      success: function (response) {
+        console.log(response);
+        //sessionStorage.removeItem("ProductoSelected");
+        window.location.replace("/productos/productos.html");
+      },
+    });
+  }
+});
 
 //CARGA LOS PRODUCTOS DEL CARRITO PARA EL OFFCANVAS
 function cargarCarrito() {
@@ -199,6 +205,7 @@ function carritoOffCanvas() {
   }
 }
 
+//RESALTAR TALLA AL SELECCIONARLA
 document.addEventListener("DOMContentLoaded", function () {
   const buttons = document.querySelectorAll(".btn-talla");
 
@@ -210,6 +217,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+//FUNCIONES PARA INCREMENTAR INPUT DE CANTIDAD
 function increment() {
   document.getElementById("cantidad").stepUp();
 }
@@ -245,7 +253,7 @@ function construirFORM() {
   let cad = ``;
   cad = `
     <h4>${Detallesproducto[0].name}</h4>
-    <h6>${Detallesproducto[0].description}</h6>
+    <br>
     <p><strong>${Detallesproducto[0].price}€</strong></p>`;
   console.log("hola");
 

@@ -15,7 +15,7 @@
         <!--iconos-->
         <link href="https://unpkg.com/css.gg@2.0.0/icons/css/heart.css" rel="stylesheet">
         <link href="https://unpkg.com/css.gg@2.0.0/icons/css/shopping-cart.css" rel="stylesheet">
-        <link href='https://unpkg.com/css.gg@2.0.0/icons/css/home.css' rel='stylesheet'>
+        <link href="https://unpkg.com/css.gg@2.0.0/icons/css/home.css" rel="stylesheet">
     </head>
     <body>
         <nav class="navbar bg-black">
@@ -50,9 +50,7 @@
         </nav>
         <div class="container d-flex flex-row align-items-center">
             <div class="container w-50 mt-5">
-                <div class="border border-solid p-3 m-2  zoom-effect" id="imgProducto">
-                    
-                </div>
+                <div class="border border-solid p-3 m-2  zoom-effect" id="imgProducto"></div>
             </div>
             <div class="w-50 container d-flex flex-column align-items-center">
                 <div class="d-flex flex-column align-items-start w-50 mt-5">
@@ -102,11 +100,40 @@
                                 </button>
                             </div>
                         </div>
+                        <!-- Modal -->
+                        <div
+                            class="modal fade"
+                            id="modalAviso"
+                            data-bs-backdrop="static"
+                            data-bs-keyboard="false"
+                            tabindex="-1"
+                            aria-labelledby="staticBackdropLabel"
+                            aria-hidden="true"
+                        >
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header bg-danger">
+                                        <h1 class="modal-title fs-5 text-light fw-bold" id="staticBackdropLabel">Error</h1>
+                                        <button
+                                            type="button"
+                                            class="btn-close"
+                                            data-bs-dismiss="modal"
+                                            aria-label="Close"
+                                        ></button>
+                                    </div>
+                                    <div class="modal-body bg-danger text-light fw-medium">
+                                        Selecciona una cantidad valida
+                                    </div>
+                                    <div class="modal-footer bg-danger">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="mt-2" id="DetallesArticulo2"></div>
                 </div>
-                <button class="btn btn-lg rounded-5 btn-dark w-50 p-2 mt-4" aria-label="Añadir a la cesta" id="btnCesta">
-                </button>
+                <button class="btn btn-lg rounded-5 btn-dark w-50 p-2 mt-4" aria-label="Añadir a la cesta" id="btnCesta"></button>
                 <button class="btn btn-lg rounded-5 btn-light w-50 p-2 mt-2 d-flex flex-row justify-content-center align-items-center btn-outline-dark disabled">
                     <span style="margin-right: 20px;">Favorito</span>
                     <i class="gg-heart"></i>
