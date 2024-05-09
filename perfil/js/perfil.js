@@ -91,8 +91,9 @@ function carritoOffCanvas() {
       cad += `
       <div class="d-flex flex-row w-100">
         <div class="p-2 w-25">
-          <img src="../img/productos/${producto.ImgArticulo
-        }" alt="imgenArticulo" width="50px" class="rounded mr-5">
+          <img src="../img/productos/${
+            producto.ImgArticulo
+          }" alt="imgenArticulo" width="50px" class="rounded mr-5">
         </div>
         <div class="w-50">
           <p>
@@ -302,20 +303,23 @@ function llenarModalPedido(idPedido) {
         cadenapedido += `
                 <tr>
                  <td class="d-flex">
-                     <p> <img src="../img/productos/${item.url_img
-          }" alt="imgenArticulo"
+                     <p> <img src="../img/productos/${
+                       item.url_img
+                     }" alt="imgenArticulo"
                              width="50px" class="rounded mr-5"></p>
                      <p style="padding-left: 20px"><span
-                             class="text-secondary fs-6">${item.article_id
-          }</span><br>
+                             class="text-secondary fs-6">${
+                               item.article_id
+                             }</span><br>
                          <span class="fs-5">${item.name}</span><br>
-                         <span class="text-secondary fs-6"> ${item.price
-          }€ (IVA incluido) x ${item.quantity}ud.</span>
+                         <span class="text-secondary fs-6"> ${
+                           item.price
+                         }€ (IVA incluido) x ${item.quantity}ud.</span>
                      </p>
                  </td>
                  <td class="align-bottom text-secondary"> ${SinIVA.toFixed(
-            2
-          )}€</td>
+                   2
+                 )}€</td>
                  <td class="align-bottom text-secondary">21,00%</td>
                  <td class="align-bottom">${TotalArticulo.toFixed(2)}€</td>
                 </tr>
@@ -333,7 +337,9 @@ function llenarModalPedido(idPedido) {
                   </br><span class="float-end text-secondary">(*IVA incl.)</span></td>
                   <td></td>
                   <td></td>
-                  <td class="fs-4"><strong> ${pedido.total_price.toFixed(2)}€</strong></td>
+                  <td class="fs-4"><strong> ${pedido.total_price.toFixed(
+                    2
+                  )}€</strong></td>
                 </tr>      
 </table></div></div>
 `;
@@ -487,7 +493,6 @@ function rellenarPerfil() {
       <button id="rellenarperfil" class="btn btn-primary mt-2" type="submit">Enviar</button>
   </form>`);
 
-
   $("#rellenarPerfilForm").submit(function (event) {
     event.preventDefault();
     //console.log($("#nombre").val() + $("#apellido").val() + $("#provincia").val() +  $("#calle").val());
@@ -582,7 +587,6 @@ function rellenarCambioPerfil() {
         window.location.replace("./perfil.html");
       },
     });
-
   });
 }
 
@@ -617,12 +621,14 @@ function rellenarDivCarrito(productos) {
       cadena += `
       <tr>
         <td class="d-flex">
-            <p> <img src="../img/productos/${prod.ImgArticulo
-        }" alt="imgenArticulo" width="50px" class="rounded mr-5"></p>
+            <p> <img src="../img/productos/${
+              prod.ImgArticulo
+            }" alt="imgenArticulo" width="50px" class="rounded mr-5"></p>
             <p style="padding-left: 20px">
                 <span class="fs-5"> ${prod.NombreArticulo}</span><br>
-                <span class="text-secondary fs-6">${prod.total / prod.quantity
-        }€/ud (IVA incluido)
+                <span class="text-secondary fs-6">${
+                  prod.total / prod.quantity
+                }€/ud (IVA incluido)
             </p>
         </td>
         <td class="align-middle text-secondary text-center">
@@ -642,17 +648,12 @@ function rellenarDivCarrito(productos) {
     });
 
     cadena += `</table>
-    
-    <button type="button" class="btn btn-outline-dark d-flex flex-column align-items-center " style="margin-left:40%" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      Hacer pedido <i class="gg-external mt-2"></i>
-    </button>
+    <a href="./pasarela/pasarela.html" class="text-decoration-none">
+      <button type="button" class="btn btn-outline-dark d-flex flex-column align-items-center " style="margin-left:40%">
+        Hacer pedido <i class="gg-external mt-2"></i>
+      </button>
+    </a>
 `;
-
-    // Espera a que el modal se abra
-    $("#exampleModal").on("show.bs.modal", function (event) {
-      // Llenar el contenido del modal con los datos necesarios
-      llenarModal();
-    });
 
     $("#productosCarrito").empty().append(cadena);
     //console.log("se rellena carrito");
@@ -688,80 +689,6 @@ function rellenarDivCarrito(productos) {
     });
   }
 }
-
-//RELLENA EL MODAL PARA REALIZAR PEDIDO
-function llenarModal() {
-  //console.log("se llena modal");
-  let cadenaModal = ``;
-  let precio_total = 0;
-
-  cadenaModal += `
-  <div class="container">
-    <img src="../img/logo_black.png" alt="logo" width="150px" class="float-end">
-    <h3>Datos de envío:</h3>
-    <h5>Nombre: ${datosUser.name} ${datosUser.surname}</h5>
-    <h5>Provincia: ${datosUser.provincia}</h5>
-    <h5>Calle: ${datosUser.calle} </h5>
-    <br>
-    <hr><br>
-    <h3>Datos pedido</h3>
-    <br>
-    <div class="table-responisve">
-      <table class="table table-striped table-hover  align-middle">
-        <th>Producto</th>
-        <th>Cantidad</th>
-        <th>Precio</th>
-      `;
-  carrito.forEach((element) => {
-    precio_total += element.total;
-    cadenaModal += ` 
-            <tr>
-                <td> ${element.NombreArticulo} </td>
-                <td>${element.quantity}</td>
-                <td>${element.total}€</td>
-            </tr>
-     
-        `;
-  });
-
-  cadenaModal += `</table></div><h4 class="float-end">Precio total: ${precio_total}€</h4></div>`;
-
-  $("#modalContent").html(cadenaModal);
-}
-
-//BOTON QUE REALIZA LA COMPRA
-btnCompra.addEventListener("click", (event) => {
-  event.preventDefault();
-
-  //calcular precio total
-  let precio_total = 0;
-  carrito.forEach((element) => {
-    precio_total += element.total;
-  });
-
-  //confirmar creacion de pedido
-  var confirmacion = confirm("¿Estás seguro de que deseas realizar la compra?");
-
-  if (confirmacion) {
-    $.ajax({
-      type: "POST",
-      url: url_site + `/api/create_pedido`,
-      dataType: "json",
-      headers: {
-        Authorization: "Bearer " + tokenusu,
-      },
-      data: {
-        total_price: precio_total,
-        basket: JSON.stringify(carrito),
-      },
-      success: function (response) {
-        window.location.replace("./perfil.html");
-      },
-    });
-  } else {
-    return false;
-  }
-});
 
 //BOTON QUE REALIZA EL CIERRE DE SESION
 btnLogout.addEventListener("click", () => {
