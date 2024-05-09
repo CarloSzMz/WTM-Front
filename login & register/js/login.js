@@ -1,7 +1,7 @@
 let input_email = document.getElementById("input_email");
 let input_passw = document.getElementById("input_passw");
 let btnLogin = document.getElementById("btnLogin");
-let url_site = `http://localhost:8000`;
+let url_site = "http://52.205.64.156";
 
 btnLogin.addEventListener("click", (event) => {
   event.preventDefault();

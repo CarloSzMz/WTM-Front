@@ -5,7 +5,7 @@ let pedidos = [];
 let btnLogout = document.getElementById("btnlogout");
 let btnCompra = document.getElementById("confirmarCompra");
 let divcarrito = document.getElementById("productosCarrito");
-let url_site = `http://localhost:8000`;
+let url_site = "http://52.205.64.156";
 
 //console.log(tokenusu);
 
@@ -54,7 +54,7 @@ function cargarCarrito() {
     success: function (response) {
       data = JSON.parse(JSON.stringify(response));
       carrito = data.data;
-      console.log(carrito);
+      //console.log(carrito);
 
       carritoOffCanvas();
       rellenarDivCarrito(carrito.length);
@@ -91,9 +91,8 @@ function carritoOffCanvas() {
       cad += `
       <div class="d-flex flex-row w-100">
         <div class="p-2 w-25">
-          <img src="../img/productos/${
-            producto.ImgArticulo
-          }" alt="imgenArticulo" width="50px" class="rounded mr-5">
+          <img src="../img/productos/${producto.ImgArticulo
+        }" alt="imgenArticulo" width="50px" class="rounded mr-5">
         </div>
         <div class="w-50">
           <p>
@@ -138,7 +137,7 @@ function cargarPedidos() {
     success: function (response) {
       data = JSON.parse(JSON.stringify(response));
       pedidos = data.data;
-      console.log(pedidos);
+      //console.log(pedidos);
 
       cargarTablaPedidos();
     },
@@ -252,7 +251,7 @@ function formatearFechaHoraPedido(fecha) {
 
 //CARGAR MODAL DE VISUALIZACIÓN DE PEDIDO
 function llenarModalPedido(idPedido) {
-  console.log("pedido cargado" + idPedido);
+  //console.log("pedido cargado" + idPedido);
   var pedido = [];
   var articulosPedido = [];
   cadenapedido = ``;
@@ -270,8 +269,8 @@ function llenarModalPedido(idPedido) {
       data = JSON.parse(JSON.stringify(response));
       pedido = data.Pedido;
       articulosPedido = data.ArticulosPedido;
-      console.log(pedido);
-      console.log(articulosPedido);
+      //console.log(pedido);
+      //console.log(articulosPedido);
       var fechapedido = formatearFechaHoraPedido(pedido.created_at);
       var IVA = 0.21;
       var totalsinIVA = 0;
@@ -303,23 +302,20 @@ function llenarModalPedido(idPedido) {
         cadenapedido += `
                 <tr>
                  <td class="d-flex">
-                     <p> <img src="../img/productos/${
-                       item.url_img
-                     }" alt="imgenArticulo"
+                     <p> <img src="../img/productos/${item.url_img
+          }" alt="imgenArticulo"
                              width="50px" class="rounded mr-5"></p>
                      <p style="padding-left: 20px"><span
-                             class="text-secondary fs-6">${
-                               item.article_id
-                             }</span><br>
+                             class="text-secondary fs-6">${item.article_id
+          }</span><br>
                          <span class="fs-5">${item.name}</span><br>
-                         <span class="text-secondary fs-6"> ${
-                           item.price
-                         }€ (IVA incluido) x ${item.quantity}ud.</span>
+                         <span class="text-secondary fs-6"> ${item.price
+          }€ (IVA incluido) x ${item.quantity}ud.</span>
                      </p>
                  </td>
                  <td class="align-bottom text-secondary"> ${SinIVA.toFixed(
-                   2
-                 )}€</td>
+            2
+          )}€</td>
                  <td class="align-bottom text-secondary">21,00%</td>
                  <td class="align-bottom">${TotalArticulo.toFixed(2)}€</td>
                 </tr>
@@ -354,7 +350,7 @@ document
     const modalContent = document.getElementById("modalContentPedido");
 
     // Descargar la imagen y luego generar el PDF
-    const imageUrl = "../img/logo_black.png";
+    const imageUrl = "/img/logo_black.png";
     fetch(imageUrl)
       .then((response) => response.blob())
       .then((blob) => {
@@ -395,7 +391,7 @@ function deleteprodCarritoNose() {
           id: producto.IdCesta,
         },
         success: function (response) {
-          console.log(response);
+          //console.log(response);
           window.location.reload();
         },
       });
@@ -415,7 +411,7 @@ function cargarPERFIL() {
     success: function (response) {
       //console.log(response);
       datosUser = response.data;
-      console.log(datosUser);
+      //console.log(datosUser);
 
       if (datosUser.calle == "") {
         $("#infoUsu").append(`
@@ -447,7 +443,7 @@ function cargarPERFIL() {
 function rellenarPerfil() {
   $("#completaperfil").append(`
   <h4>Acaba de rellenar tu perfil</h4>
-  <form class="p-3">
+  <form class="p-3" id="rellenarPerfilForm">
       <div class="form-group mt-2">
           <label for="nombre">Nombre:</label>
           <input
@@ -488,14 +484,12 @@ function rellenarPerfil() {
               required
           >
       </div>
-      <button id="rellenarperfil" class="btn btn-primary mt-2">Enviar</button>
+      <button id="rellenarperfil" class="btn btn-primary mt-2" type="submit">Enviar</button>
   </form>`);
 
-  btnrellenarPerfil = document.getElementById("rellenarperfil");
 
-  btnrellenarPerfil.addEventListener("click", (event) => {
+  $("#rellenarPerfilForm").submit(function (event) {
     event.preventDefault();
-    console.log("click");
     //console.log($("#nombre").val() + $("#apellido").val() + $("#provincia").val() +  $("#calle").val());
 
     $.ajax({
@@ -512,8 +506,8 @@ function rellenarPerfil() {
         calle: $("#calle").val(),
       },
       success: function (response) {
-        console.log(response);
-        window.location.replace("../index.html");
+        //console.log(response);
+        window.location.replace("./perfil.html");
       },
     });
   });
@@ -523,7 +517,7 @@ function rellenarPerfil() {
 function rellenarCambioPerfil() {
   $("#completaperfil").append(`
   <h4>Cambia tu perfil</h4>
-  <form class="p-3">
+  <form class="p-3" id="formularioPerfil">
     <div class="form-group mt-2">
           <label for="nombre">Nombre:</label>
           <input
@@ -564,15 +558,11 @@ function rellenarCambioPerfil() {
               required
           >
       </div>
-      <button id="cambioPerfil" class="btn btn-primary mt-2">Enviar</button>
+      <button type="submit" id="cambioPerfil" class="btn btn-primary mt-2">Enviar</button>
   </form>`);
 
-  btnCmabioPerfil = document.getElementById("cambioPerfil");
-
-  btnCmabioPerfil.addEventListener("click", (event) => {
-    event.preventDefault();
-    console.log("click");
-    //console.log($("#nombre").val() + $("#apellido").val() + $("#provincia").val() +  $("#calle").val());
+  $("#formularioPerfil").submit(function (event) {
+    event.preventDefault(); // Evita que se envíe el formulario de forma tradicional
 
     $.ajax({
       type: "PUT",
@@ -588,10 +578,11 @@ function rellenarCambioPerfil() {
         calle: $("#calle").val(),
       },
       success: function (response) {
-        console.log(response);
-        window.location.replace("../index.html");
+        //console.log(response);
+        window.location.replace("./perfil.html");
       },
     });
+
   });
 }
 
@@ -626,14 +617,12 @@ function rellenarDivCarrito(productos) {
       cadena += `
       <tr>
         <td class="d-flex">
-            <p> <img src="../img/productos/${
-              prod.ImgArticulo
-            }" alt="imgenArticulo" width="50px" class="rounded mr-5"></p>
+            <p> <img src="../img/productos/${prod.ImgArticulo
+        }" alt="imgenArticulo" width="50px" class="rounded mr-5"></p>
             <p style="padding-left: 20px">
                 <span class="fs-5"> ${prod.NombreArticulo}</span><br>
-                <span class="text-secondary fs-6">${
-                  prod.total / prod.quantity
-                }€/ud (IVA incluido)
+                <span class="text-secondary fs-6">${prod.total / prod.quantity
+        }€/ud (IVA incluido)
             </p>
         </td>
         <td class="align-middle text-secondary text-center">
@@ -666,14 +655,14 @@ function rellenarDivCarrito(productos) {
     });
 
     $("#productosCarrito").empty().append(cadena);
-    console.log("se rellena carrito");
+    //console.log("se rellena carrito");
 
     // Agregar event listener a cada input
     $(".cantidadProd").each(function () {
       $(this).on("blur", function (event) {
         // Acciones que deseas realizar cuando el valor del input cambia
-        console.log("El valor del input ha cambiado:", event.target.value);
-        console.log("id cesta:", $(this).data("cesta-id"));
+        //console.log("El valor del input ha cambiado:", event.target.value);
+        //console.log("id cesta:", $(this).data("cesta-id"));
         var idcesta = $(this).data("cesta-id");
         try {
           $.ajax({
@@ -688,7 +677,7 @@ function rellenarDivCarrito(productos) {
               quantity: event.target.value,
             },
             success: function (response) {
-              console.log(response);
+              //console.log(response);
               cargarCarrito();
             },
           });
@@ -702,7 +691,7 @@ function rellenarDivCarrito(productos) {
 
 //RELLENA EL MODAL PARA REALIZAR PEDIDO
 function llenarModal() {
-  console.log("se llena modal");
+  //console.log("se llena modal");
   let cadenaModal = ``;
   let precio_total = 0;
 
@@ -776,7 +765,7 @@ btnCompra.addEventListener("click", (event) => {
 
 //BOTON QUE REALIZA EL CIERRE DE SESION
 btnLogout.addEventListener("click", () => {
-  console.log("chauuuuuu");
+  //console.log("chauuuuuu");
   sessionStorage.removeItem("tokenusu");
 
   $.ajax({

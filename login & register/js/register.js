@@ -1,55 +1,42 @@
-let input_email = document.getElementById("input_email");
-let input_passw = document.getElementById("input_passw");
-let input_passw_confirm = document.getElementById("input_passw_confirm");
-let input_nombre = document.getElementById("input_nombre");
+let url_site = "http://52.205.64.156";
 
-let btnRegister = document.getElementById("btnRegister");
 
-let url_site = `http://localhost:8000`;
+$(document).ready(function () {
+  $("#formregister").submit(function (event) {
+    event.preventDefault();
 
-btnRegister.addEventListener("click", (event) => {
-  event.preventDefault();
-  console.log(input_email.value);
-  console.log(input_passw.value);
-  console.log(input_passw_confirm.value);
-  console.log(input_nombre.value);
-  if (checkform() == true) {
-    console.log("ta bien");
+    // Obtener los valores de los campos
+    let input_email = $("#input_email").val();
+    let input_passw = $("#input_passw").val();
+    let input_passw_confirm = $("#input_passw_confirm").val();
+    let input_nombre = $("#input_nombre").val();
 
-    $.ajax({
-      type: "POST",
-      url: url_site + `/api/register`,
-      dataType: "json",
-      data: {
-        name: input_nombre.value,
-        email: input_email.value,
-        password: input_passw.value,
-        password_confirmation: input_passw_confirm.value,
-      },
-      success: function (response) {
-        //console.log(response);
-        if (!$.trim(response)) {
-          // alert('Datos incorrectos - Intente de nuevo para continuar');
-          location.reload();
-        } else {
-          // console.log(response.access_token);
-          //sessionStorage.setItem("tokenusu", response.access_token);
-          console.log("funciona");
-          //console.log(sessionStorage.getItem("tokenusu"));
-
-          window.location.replace("./login.html");
+    // Verificar si las contraseñas coinciden
+    if (input_passw === input_passw_confirm) {
+      $.ajax({
+        type: "POST",
+        url: url_site + `/api/register`,
+        dataType: "json",
+        data: {
+          name: input_nombre,
+          email: input_email,
+          password: input_passw,
+          password_confirmation: input_passw_confirm
+        },
+        success: function (response) {
+          if (!$.trim(response)) {
+            location.reload();
+          } else {
+            window.location.replace("./login.html");
+          }
+        },
+        error: function (xhr, status, error) {
+          console.log(xhr.responseText);
+          alert("Ocurrió un error al procesar la solicitud. Por favor, inténtalo de nuevo más tarde.");
         }
-      },
-    });
-  } else {
-    console.log("ta mal");
-  }
+      });
+    } else {
+      alert("Las contraseñas no coinciden");
+    }
+  });
 });
-
-function checkform() {
-  let correct = false;
-  if (input_passw.value === input_passw_confirm.value) {
-    correct = true;
-  }
-  return correct;
-}

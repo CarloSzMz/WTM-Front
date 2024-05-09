@@ -1,12 +1,12 @@
 let tokenusu = sessionStorage.getItem("tokenusu");
 let FiltroCategoria = sessionStorage.getItem("FiltroCategoria");
-console.log("Categoria Seleccionada: " + FiltroCategoria);
+//console.log("Categoria Seleccionada: " + FiltroCategoria);
 
 let productos = [];
 let productosCamisteas = [];
 let productosSudaderas = [];
 let carrito = [];
-let url_site = "http://localhost:8000";
+let url_site = "http://52.205.64.156";
 
 //LLAMA A LAS FUNCIONES
 function cargarDatos() {
@@ -77,7 +77,7 @@ function cargarCarrito() {
     success: function (response) {
       data = JSON.parse(JSON.stringify(response));
       carrito = data.data;
-      console.log(carrito);
+      //console.log(carrito);
 
       carritoOffCanvas();
       deleteprodCarritoNose();
@@ -138,9 +138,8 @@ function carritoOffCanvas() {
       cad += `
         <div class="d-flex flex-row w-100">
           <div class="p-2 w-25">
-            <img src="../img/productos/${
-              producto.ImgArticulo
-            }" alt="imgenArticulo" width="50px" class="rounded mr-5">
+            <img src="../img/productos/${producto.ImgArticulo
+        }" alt="imgenArticulo" width="50px" class="rounded mr-5">
           </div>
           <div class="w-50">
             <p>
@@ -195,9 +194,6 @@ function cargarProductos() {
         }
       });
 
-      console.log("Camiestas: ", productosCamisteas);
-      console.log("Sudaderas: ", productosSudaderas);
-
       distribuirProductosCamiestas();
       distribuirProductosSudaderas();
     },
@@ -216,7 +212,6 @@ function CargarFiltros() {
     $("#mostrarSudaderas").addClass("d-none");
     $("#mostrarCamisetas").removeClass("d-none");
   } else if (FiltroCategoria === null) {
-    console.log("nada");
     $("#mostrarSudaderas").removeClass("d-none");
     $("#mostrarCamisetas").removeClass("d-none");
   }
@@ -227,7 +222,10 @@ function distribuirProductosCamiestas() {
   productosCamisteas.forEach((articulo) => {
     cadena += `
     <div class="card m-2" style="width: 18rem;" onclick="envioProductos(${articulo.id})">
-        <img src="../img/productos/${articulo.url_img}" class="card-img-top imagen_categorias" alt="..." >
+        <img src="../img/productos/${articulo.url_img}" class="card-img-top imagen_categorias" alt="img camiseta" >
+        <div class="card-body d-flex justify-content-center">
+          <h5>${articulo.name}</h5>
+        </div>
     </div>
     `;
   });
@@ -240,7 +238,10 @@ function distribuirProductosSudaderas() {
   productosSudaderas.forEach((articulo) => {
     cadena += `
     <div class="card m-2" style="width: 18rem;" onclick="envioProductos(${articulo.id})">
-        <img src="../img/productos/${articulo.url_img}" class="card-img-top imagen_categorias" alt="..." >
+        <img src="../img/productos/${articulo.url_img}" class="card-img-top imagen_categorias" alt="img sudadera" >
+        <div class="card-body d-flex justify-content-center">
+          <h5>${articulo.name}</h5>
+        </div>
     </div>
     `;
   });
@@ -250,7 +251,6 @@ function distribuirProductosSudaderas() {
 
 //FUNCION QUE LLEVA AL DETALLE DE LOS PRODUCTOS
 function envioProductos(id) {
-  console.log(id);
   sessionStorage.setItem("ProductoSelected", id);
   window.location.replace("./detalle/detalle.html");
 }
@@ -280,7 +280,7 @@ $(document).ready(function () {
   });
 });
 
-$(document).ready(function () { 
+$(document).ready(function () {
   // Evento change para los checkboxes de sudaderas y camisetas
   $("#sudaderasCheckbox, #camisetasCheckbox").change(function () {
     // Actualizar el valor de FiltroCategoria en sessionStorage
@@ -289,14 +289,14 @@ $(document).ready(function () {
       !$("#camisetasCheckbox").is(":checked")
     ) {
       sessionStorage.setItem("FiltroCategoria", "sudaderas");
-      console.log("click en sudaderas");
+      //console.log("click en sudaderas");
       $("#mostrarSudaderas").removeClass("d-none");
       $("#mostrarCamisetas").addClass("d-none");
     } else if (
       !$("#sudaderasCheckbox").is(":checked") &&
       $("#camisetasCheckbox").is(":checked")
     ) {
-      console.log("click en camisetas");
+      //console.log("click en camisetas");
       sessionStorage.setItem("FiltroCategoria", "camisetas");
       $("#mostrarCamisetas").removeClass("d-none");
       $("#mostrarSudaderas").addClass("d-none");

@@ -1,12 +1,12 @@
 let tokenusu = sessionStorage.getItem("tokenusu");
 let ProductoSelected = sessionStorage.getItem("ProductoSelected");
-console.log("producto" + ProductoSelected);
+//console.log("producto" + ProductoSelected);
 let carrito = [];
 let Detallesproducto = [];
 let btnCesta = document.getElementById("btnCesta");
 let inputCantidad = document.getElementById("cantidad");
 
-let url_site = "http://localhost:8000";
+let url_site = "http://52.205.64.156";
 
 //LLAMA A LAS FUNCIONES
 function cargarDatos() {
@@ -73,7 +73,7 @@ function cargarNav() {
 //LISTENER PARA AÑADIR PROD. A LA CESTA
 btnCesta.addEventListener("click", () => {
   cantidad = inputCantidad.value;
-  if (cantidad > Detallesproducto[0].quantity) {
+  if (cantidad > Detallesproducto[ 0 ].quantity) {
     $('#modalAviso').modal('show'); // Mostrar el modal
   } else {
     $.ajax({
@@ -88,9 +88,9 @@ btnCesta.addEventListener("click", () => {
         quantity: cantidad,
       },
       success: function (response) {
-        console.log(response);
+        //console.log(response);
         //sessionStorage.removeItem("ProductoSelected");
-        window.location.replace("../productos.html");
+        window.location.replace("/productos/productos.html");
       },
     });
   }
@@ -108,7 +108,7 @@ function cargarCarrito() {
     success: function (response) {
       data = JSON.parse(JSON.stringify(response));
       carrito = data.data;
-      console.log(carrito);
+      //console.log(carrito);
 
       carritoOffCanvas();
       deleteprodCarritoNose();
@@ -133,7 +133,7 @@ function deleteprodCarritoNose() {
           id: producto.IdCesta,
         },
         success: function (response) {
-          console.log(response);
+          //console.log(response);
           window.location.reload();
         },
       });
@@ -169,9 +169,8 @@ function carritoOffCanvas() {
       cad += `
           <div class="d-flex flex-row w-100">
             <div class="p-2 w-25">
-              <img src="../../img/productos/${
-                producto.ImgArticulo
-              }" alt="imgenArticulo" width="50px" class="rounded mr-5">
+              <img src="../../img/productos/${producto.ImgArticulo
+        }" alt="imgenArticulo" width="50px" class="rounded mr-5">
             </div>
             <div class="w-50">
               <p>
@@ -238,13 +237,13 @@ function cargarProducto() {
     success: function (response) {
       data = JSON.parse(JSON.stringify(response));
       Detallesproducto = data.data;
-      console.log(Detallesproducto);
+      //console.log(Detallesproducto);
       construirFORM();
 
       // Obtienes el elemento input por su id
 
       // Le asignas el valor máximo al atributo max del input
-      inputCantidad.setAttribute("max", Detallesproducto[0].quantity);
+      inputCantidad.setAttribute("max", Detallesproducto[ 0 ].quantity);
     },
   });
 }
@@ -252,18 +251,17 @@ function cargarProducto() {
 function construirFORM() {
   let cad = ``;
   cad = `
-    <h4>${Detallesproducto[0].name}</h4>
+    <h4>${Detallesproducto[ 0 ].name}</h4>
     <br>
-    <p><strong>${Detallesproducto[0].price}€</strong></p>`;
-  console.log("hola");
+    <p><strong>${Detallesproducto[ 0 ].price}€</strong></p>`;
 
   $("#DetallesArticulo1").html(cad);
 
-  cad = `<h6>Stock Restante: ${Detallesproducto[0].quantity}</h6>`;
+  cad = `<h6>Stock Restante: ${Detallesproducto[ 0 ].quantity}</h6>`;
 
   $("#DetallesArticulo2").html(cad);
   $("#imgProducto").html(
-    `<img src="../../img/productos/${Detallesproducto[0].url_img}" alt="" style="width: 100%; height: 100%; background-size: cover;">`
+    `<img src="../../img/productos/${Detallesproducto[ 0 ].url_img}" alt="" style="width: 100%; height: 100%; background-size: cover;">`
   );
 }
 
