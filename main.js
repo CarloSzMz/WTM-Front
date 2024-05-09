@@ -6,12 +6,12 @@ let url_site = "http://52.205.64.156";
 let datosUser = [];
 
 
-//console.log("token usuario: " + tokenusu);
+console.log("token usuario: " + tokenusu);
 
 function cargarDatos() {
   if (tokenusu != null) {
-    cargarUser();
     cargarCarrito();
+    cargarUser();
   }
   cargarNav();
 }
@@ -27,6 +27,8 @@ function cargarUser() {
     },
     success: function (response) {
       datosUser = response.data;
+      console.log(datosUser);
+      $("#nombreuser").html(`Bienvenido ${datosUser.name}`);
     },
   });
 }
@@ -42,9 +44,10 @@ function cargarNav() {
     );
     $("#bodyCarrito").append(`<h4>Inicia Sesión para ver tu carrito</h4>`);
   } else {
+    console.log("cargo nav d user");
     $("#nav").append(
       `
-      <span class="fst-italic">Bienvenido ${datosUser.name}</span>
+      
       <a class="nav-link active" href="./perfil/perfil.html">
       <button class="navbar-toggler mx-2 d-flex flex-column align-items-center">
           <i class="fa-solid fa-user text-light"></i>
