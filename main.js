@@ -3,14 +3,32 @@ let tokenusu = sessionStorage.getItem("tokenusu");
 let CategoriaCamisteas = document.getElementById("CategoriaCamisetas");
 let CategoriaSudaderas = document.getElementById("CategoriaSudaderas");
 let url_site = "http://52.205.64.156";
+let datosUser = [];
+
 
 //console.log("token usuario: " + tokenusu);
 
 function cargarDatos() {
-  cargarNav();
   if (tokenusu != null) {
+    cargarUser();
     cargarCarrito();
   }
+  cargarNav();
+}
+
+//ver los datos de usuario
+function cargarUser() {
+  $.ajax({
+    type: "GET",
+    url: url_site + `/api/get_user`,
+    dataType: "json",
+    headers: {
+      Authorization: "Bearer " + tokenusu,
+    },
+    success: function (response) {
+      datosUser = response.data;
+    },
+  });
 }
 
 function cargarNav() {
@@ -26,6 +44,7 @@ function cargarNav() {
   } else {
     $("#nav").append(
       `
+      <span class="fst-italic">Bienvenido ${datosUser.name}</span>
       <a class="nav-link active" href="./perfil/perfil.html">
       <button class="navbar-toggler mx-2 d-flex flex-column align-items-center">
           <i class="fa-solid fa-user text-light"></i>
@@ -118,9 +137,13 @@ function cargarCarrito() {
         <hr style="border-top: 1px dotted #000; width:100%;">
         <p class="w-100">Total (IVA Incluido) <span class="float-end h3">${precioTotal}€</span></p>
         <button class="w-100 btn btn-outline-secondary rounded-2"> 
-        <a href="./perfil/perfil.html" class="text-decoration-none text-dark">Ver artículos en tu Cesta</a>
+          <a href="./perfil/perfil.html" class="text-decoration-none text-dark">Ver artículos en tu Cesta</a>
+        </button>
+        <button class="w-100 btn btn-outline-secondary rounded-2 mt-3"> 
+          <a href="./perfil/pasarela/pasarela.html" class="text-decoration-none text-dark">Realizar Pedido</a>
         </button>
         `;
+        console.log(cad);
         $("#bodyCarrito").append(cad);
       }
       deleteprodCarritoNose();

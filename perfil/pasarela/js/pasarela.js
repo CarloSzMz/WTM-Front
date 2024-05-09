@@ -128,6 +128,9 @@ function carritoOffCanvas() {
     <button class="w-100 btn btn-outline-secondary rounded-2"> 
     <a href="../perfil.html" class="text-decoration-none text-dark">Ver artículos en tu Cesta</a>
     </button>
+    <button class="w-100 btn btn-outline-secondary rounded-2 mt-3"> 
+    <a href="./pasarela.html" class="text-decoration-none text-dark">Realizar Pedido</a>
+    </button>
     `;
     $("#bodyCarrito").empty().append(cad);
   }
@@ -192,7 +195,7 @@ function cargarUser() {
     },
     success: function (response) {
       datosUser = response.data;
-      console.log(datosUser);
+      //console.log(datosUser);
       if (datosUser.name != null) {
         $("#nombreCompletoInput").val(datosUser.name);
       }

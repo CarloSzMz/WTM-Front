@@ -108,6 +108,9 @@ function cargarCarrito() {
                   <button class="btn d-flex float-end" type="submit" id="borrarDelCarrito${cont}">
                     <i class="fa-solid fa-trash"></i>
                   </button>
+                  <button class="w-100 btn btn-outline-secondary rounded-2 mt-3"> 
+                  <a href="../perfil/pasarela/pasarela.html" class="text-decoration-none text-dark">Realizar Pedido</a>
+                  </button>
               </div>
             </div>          
             `;
