@@ -20,7 +20,7 @@ function cargarDatos() {
 //CARGA LA NAVBAR
 function cargarNav() {
   $("#nav").append(
-    `<a class="nav-link active" href="/index.html">
+    `<a class="nav-link active" href="../index.html">
     <button class="navbar-toggler mx-2 d-flex flex-column align-items-center">
       <i class="gg-home text-light mt-2"></i>
       <span class="text-light text-center fs-6 mt-2">Inicio</span>
@@ -91,7 +91,7 @@ function carritoOffCanvas() {
       cad += `
       <div class="d-flex flex-row w-100">
         <div class="p-2 w-25">
-          <img src="/img/productos/${
+          <img src="../img/productos/${
             producto.ImgArticulo
           }" alt="imgenArticulo" width="50px" class="rounded mr-5">
         </div>
@@ -279,7 +279,7 @@ function llenarModalPedido(idPedido) {
       
       <div class="container bg-secondary-subtle">
         <div class="container pt-4 pb-4">
-            <img src="/img/logo_black.png" alt="logo" width="150px" class="float-end">
+            <img src="../img/logo_black.png" alt="logo" width="150px" class="float-end">
             <h4 style="font-size: 15px">${fechapedido}</h4>
             <h3>Confirmación de pedido</h3>
             <p class=" text-secondary">Su pedido ha sido procesado correctamente.<br>
@@ -303,7 +303,7 @@ function llenarModalPedido(idPedido) {
         cadenapedido += `
                 <tr>
                  <td class="d-flex">
-                     <p> <img src="/img/productos/${
+                     <p> <img src="../img/productos/${
                        item.url_img
                      }" alt="imgenArticulo"
                              width="50px" class="rounded mr-5"></p>
@@ -354,7 +354,7 @@ document
     const modalContent = document.getElementById("modalContentPedido");
 
     // Descargar la imagen y luego generar el PDF
-    const imageUrl = "/img/logo_black.png";
+    const imageUrl = "../img/logo_black.png";
     fetch(imageUrl)
       .then((response) => response.blob())
       .then((blob) => {
@@ -626,7 +626,7 @@ function rellenarDivCarrito(productos) {
       cadena += `
       <tr>
         <td class="d-flex">
-            <p> <img src="/img/productos/${
+            <p> <img src="../img/productos/${
               prod.ImgArticulo
             }" alt="imgenArticulo" width="50px" class="rounded mr-5"></p>
             <p style="padding-left: 20px">
@@ -708,7 +708,7 @@ function llenarModal() {
 
   cadenaModal += `
   <div class="container">
-    <img src="/img/logo_black.png" alt="logo" width="150px" class="float-end">
+    <img src="../img/logo_black.png" alt="logo" width="150px" class="float-end">
     <h3>Datos de envío:</h3>
     <h5>Nombre: ${datosUser.name} ${datosUser.surname}</h5>
     <h5>Provincia: ${datosUser.provincia}</h5>

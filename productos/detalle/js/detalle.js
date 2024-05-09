@@ -21,7 +21,7 @@ function cargarNav() {
   //Añadir btn inicio
   $("#nav").append(
     `
-    <a class="nav-link active" href="/index.html">
+    <a class="nav-link active" href="../../index.html">
       <button class="navbar-toggler mx-2 d-flex flex-column align-items-center">
         <i class="gg-home text-light mt-2"></i>
         <span class="text-light text-center fs-6 mt-2">Inicio</span>
@@ -31,7 +31,7 @@ function cargarNav() {
 
   if (tokenusu == null) {
     $("#nav").append(
-      `<a class="nav-link active mx-2 text-light" aria-current="page" href="/login & register/login.html">
+      `<a class="nav-link active mx-2 text-light" aria-current="page" href="../../login & register/login.html">
       <button class="navbar-toggler mx-2 d-flex flex-column align-items-center">
         <span class="text-light text-center fs-6 mt-2">Iniciar Sesión</span>
       </button>
@@ -39,12 +39,12 @@ function cargarNav() {
     );
     $("#bodyCarrito").append(`<h4>Inicia Sesión para ver tu carrito</h4>`);
     $("#btnCesta").append(
-      `<a href="/login & register/login.html" class="text-decoration-none text-light"> <strong>Inicia Sesión</strong></a>`
+      `<a href="../../login & register/login.html" class="text-decoration-none text-light"> <strong>Inicia Sesión</strong></a>`
     );
   } else {
     $("#nav").append(
       `
-        <a class="nav-link active" href="/perfil/perfil.html">
+        <a class="nav-link active" href="../../perfil/perfil.html">
           <button class="navbar-toggler mx-2 d-flex flex-column align-items-center">
               <i class="fa-solid fa-user text-light"></i>
               <span class="text-light text-center fs-6 mt-2">Perfil</span>
@@ -90,7 +90,7 @@ btnCesta.addEventListener("click", () => {
       success: function (response) {
         console.log(response);
         //sessionStorage.removeItem("ProductoSelected");
-        window.location.replace("/productos/productos.html");
+        window.location.replace("../productos.html");
       },
     });
   }
@@ -155,7 +155,7 @@ function carritoOffCanvas() {
           <h4>Tu carrito está vacío</h4>
           <p class="text-center w-75">Explora los artículos a buen precio que tenemos para ti</p>
           <button class="btn btn-info rounded-3">
-              <a href="/index.html" class="text-decoration-none text-dark">Explorar Articulos</a>
+              <a href="../../index.html" class="text-decoration-none text-dark">Explorar Articulos</a>
           </button>
         `
     );
@@ -169,7 +169,7 @@ function carritoOffCanvas() {
       cad += `
           <div class="d-flex flex-row w-100">
             <div class="p-2 w-25">
-              <img src="/img/productos/${
+              <img src="../../img/productos/${
                 producto.ImgArticulo
               }" alt="imgenArticulo" width="50px" class="rounded mr-5">
             </div>
@@ -198,7 +198,7 @@ function carritoOffCanvas() {
         <hr style="border-top: 1px dotted #000; width:100%;">
         <p class="w-100">Total (IVA Incluido) <span class="float-end h3">${precioTotal}€</span></p>
         <button class="w-100 btn btn-outline-secondary rounded-2"> 
-        <a href="/perfil/perfil.html" class="text-decoration-none text-dark">Ver artículos en tu Cesta</a>
+        <a href="../../perfil/perfil.html" class="text-decoration-none text-dark">Ver artículos en tu Cesta</a>
         </button>
         `;
     $("#bodyCarrito").empty().append(cad);
@@ -263,7 +263,7 @@ function construirFORM() {
 
   $("#DetallesArticulo2").html(cad);
   $("#imgProducto").html(
-    `<img src="/img/productos/${Detallesproducto[0].url_img}" alt="" style="width: 100%; height: 100%; background-size: cover;">`
+    `<img src="../../img/productos/${Detallesproducto[0].url_img}" alt="" style="width: 100%; height: 100%; background-size: cover;">`
   );
 }
 

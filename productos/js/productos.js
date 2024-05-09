@@ -23,7 +23,7 @@ function cargarNav() {
   //Añadir btn inicio
   $("#nav").append(
     `
-    <a class="nav-link active" href="/index.html">
+    <a class="nav-link active" href="../index.html">
     <button class="navbar-toggler mx-2 d-flex flex-column align-items-center">
       <i class="gg-home text-light mt-2"></i>
       <span class="text-light text-center fs-6 mt-2">Inicio</span>
@@ -33,7 +33,7 @@ function cargarNav() {
   //comprobar token acceso
   if (tokenusu == null) {
     $("#nav").append(
-      `<a class="nav-link active mx-2 text-light" aria-current="page" href="/login & register/login.html">
+      `<a class="nav-link active mx-2 text-light" aria-current="page" href="../login & register/login.html">
       <button class="navbar-toggler mx-2 d-flex flex-column align-items-center">
         <span class="text-light text-center fs-6 mt-2">Iniciar Sesión</span>
       </button>
@@ -42,7 +42,7 @@ function cargarNav() {
     $("#bodyCarrito").append(`<h4>Inicia Sesión para ver tu carrito</h4>`);
   } else {
     $("#nav").append(`
-    <a class="nav-link active" href="/perfil/perfil.html">
+    <a class="nav-link active" href="../perfil/perfil.html">
       <button class="navbar-toggler mx-2 d-flex flex-column align-items-center">
           <i class="fa-solid fa-user text-light"></i>
           <span class="text-light text-center fs-6 mt-2">Perfil</span>
@@ -252,7 +252,7 @@ function distribuirProductosSudaderas() {
 function envioProductos(id) {
   console.log(id);
   sessionStorage.setItem("ProductoSelected", id);
-  window.location.replace("/productos/detalle/detalle.html");
+  window.location.replace("./detalle/detalle.html");
 }
 
 //CAMBIO DE ICONOS AL DESPLEGAR FILTROS

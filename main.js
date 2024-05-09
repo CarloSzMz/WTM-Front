@@ -16,7 +16,7 @@ function cargarDatos() {
 function cargarNav() {
   if (tokenusu == null) {
     $("#nav").append(
-      `<a class="nav-link active mx-2 text-light" aria-current="page" href="/login & register/login.html">
+      `<a class="nav-link active mx-2 text-light" aria-current="page" href="./login & register/login.html">
         <button class="navbar-toggler mx-2 d-flex flex-column align-items-center">
           <span class="text-light text-center fs-6 mt-2">Iniciar Sesión</span>
         </button>
@@ -118,7 +118,7 @@ function cargarCarrito() {
         <hr style="border-top: 1px dotted #000; width:100%;">
         <p class="w-100">Total (IVA Incluido) <span class="float-end h3">${precioTotal}€</span></p>
         <button class="w-100 btn btn-outline-secondary rounded-2"> 
-        <a href="perfil/perfil.html" class="text-decoration-none text-dark">Ver artículos en tu Cesta</a>
+        <a href="./perfil/perfil.html" class="text-decoration-none text-dark">Ver artículos en tu Cesta</a>
         </button>
         `;
         $("#bodyCarrito").append(cad);
