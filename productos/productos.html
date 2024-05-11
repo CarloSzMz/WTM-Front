@@ -19,6 +19,7 @@
         <link href="https://unpkg.com/css.gg@2.0.0/icons/css/home.css" rel="stylesheet">
         <!--Custom css-->
         <link rel="stylesheet" href="../styles/styles.css">
+        <link rel="stylesheet" href="./styles/productos.css">
     </head>
     <body class="bg-light-subtle">
         <!--Navbar Superior-->
@@ -54,25 +55,26 @@
         </nav>
         <div class="d-flex flex-row">
             <!-- Navbar Vertical -->
-            <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+            <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar border-end border-black" id="navLateral">
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column mt-4" style="padding-left: 8%;">
                         <li class="nav-item">
                             <a class="nav-link active text-dark d-flex flex-row w-100 justify-content-between" href="#">
-                                <span>Destacadas</span>
+                                <span id="Destacadas">Destacadas</span>
                                 <i class="gg-awards"></i>
                             </a>
                         </li>
-                        <hr style="color: black;">
+                        <hr style="color: black;" id="hrNav">
                         <li class="nav-item dropdown">
                             <a
-                                class="nav-link text-dark d-flex flex-row w-100 justify-content-between"
+                                class="nav-link text-dark"
                                 href="#ropaSubmenu"
                                 data-bs-toggle="collapse"
                                 aria-expanded="false"
                                 id="ropaSubmenuLink"
                             >
-                                <span>Ropa</span>
+                                <span id="ropaFilter">Ropa</span>
+                                <i class="fa-solid fa-shirt" id="camisetaIcon"></i>
                                 <i class="gg-arrow-down" id="ropaSubmenuIcon"></i>
                                 <!-- Añadimos un ID para identificar este icono -->
                             </a>
@@ -83,7 +85,8 @@
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" id="sudaderasCheckbox">
                                             <label class="form-check-label" for="sudaderasCheckbox">
-                                                Sudaderas
+                                                <span id="SudaderasLabel">Sudaderas</span>
+                                                <span id="Slabel">S</span>
                                             </label>
                                         </div>
                                     </li>
@@ -91,14 +94,15 @@
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" id="camisetasCheckbox">
                                             <label class="form-check-label" for="camisetasCheckbox">
-                                                Camisetas
+                                                <span id="CamisetaLabel">Camisetas</span>
+                                                <span id="Clabel">C</span>
                                             </label>
                                         </div>
                                     </li>
                                 </ul>
                             </div>
                         </li>
-                        <hr style="color: black;">
+                        <hr style="color: black;" id="hrNav">
                         <li class="nav-item dropdown">
                             <a
                                 class="nav-link text-dark d-flex flex-row w-100 justify-content-between"
@@ -106,12 +110,13 @@
                                 data-bs-toggle="collapse"
                                 aria-expanded="false"
                             >
-                                <span>Filtrar por precio</span>
+                                <span id="PrecioLabel">Filtrar por precio</span>
+                                <span id="eurolabel">€</span>
                                 <i class="gg-arrow-down" id="precioSubmenuIcon"></i>
                             </a>
                             <div class="collapse" id="precioSubmenu" style="margin-left: 16px;">
                                 <!-- Ajuste de margen izquierdo -->
-                                <ul class="nav flex-column">
+                                <ul class="nav flex-column" id="displayprecios">
                                     <li class="nav-item">
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" id="precio0_20">
@@ -158,14 +163,14 @@
                     </ul>
                 </div>
             </nav>
-            <main class="container d-flex flex-column h-100">
-                <div class="container w-100 h-50"  id="mostrarCamisetas">
+            <main class="container d-flex flex-column h-100" id="MuestraProductos">
+                <div class=" h-50 mt-3" id="mostrarCamisetas">
                     <h1>Camiestas</h1>
-                    <div id="productosCamisetasDiv" class="d-flex flex-row"></div>
+                    <div id="productosCamisetasDiv"></div>
                 </div>
-                <div class="container w-100 h-50" id="mostrarSudaderas">
+                <div class="h-50 mt-3" id="mostrarSudaderas">
                     <h1>Sudaderas</h1>
-                    <div id="productosSudaderasDiv" class="d-flex flex-row"></div>
+                    <div id="productosSudaderasDiv"></div>
                 </div>
             </main>
             <br>

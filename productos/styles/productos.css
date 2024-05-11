@@ -1,0 +1,119 @@
+#mostrarCamisetas {
+  width: 100%;
+}
+
+#mostrarSudaderas {
+  width: 100%;
+}
+
+#productosCamisetasDiv {
+  display: flex;
+  flex-direction: row;
+}
+
+#productosSudaderasDiv {
+  display: flex;
+  flex-direction: row;
+}
+
+#ropaSubmenuLink {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#camisetaIcon {
+  display: none;
+}
+
+#Slabel {
+  display: none;
+}
+
+#Clabel {
+  display: none;
+}
+
+#eurolabel {
+  display: none;
+}
+
+@media only screen and (max-width: 961px) {
+  
+
+  #hrNav {
+    width: 100%;
+  }
+
+  #mostrarCamisetas {
+    width: 50%;
+  }
+
+  #mostrarSudaderas {
+    width: 50%;
+  }
+
+  #productosCamisetasDiv {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #productosSudaderasDiv {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #navLateral {
+    height: 100vh;
+    width: 17%;
+  }
+
+  #Destacadas {
+    display: none;
+  }
+
+  #ropaFilter {
+    display: none;
+  }
+
+  #ropaSubmenuLink {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+  }
+
+  #camisetaIcon {
+    display: block;
+  }
+
+  #SudaderasLabel {
+    display: none;
+  }
+
+  #Slabel {
+    display: block;
+  }
+
+  #CamisetaLabel {
+    display: none;
+  }
+
+  #Clabel {
+    display: block;
+  }
+
+  #PrecioLabel {
+    display: none;
+  }
+
+  #eurolabel {
+    display: block;
+  }
+
+  #displayprecios {
+    font-size: small;
+  }
+
+}
