@@ -159,16 +159,44 @@ li {
 }
 
 @media only screen and (max-width: 961px) {
+  .contenedor {
+    /* flex-flow: column;*/
+  }
+
+  .logo {
+    width: 350px;
+  }
+
   .muestra {
+    display: none;
+    width: 50%;
+    height: 100%;
+    margin: 0;
+    display: flex;
+  }
+
+  .background-image {
     display: none;
   }
 
-  .contenido{
+  .contenido {
     width: 100%;
+    align-items: center;
+    justify-content: center;
   }
 
   .footer {
     width: 100%;
-    align-items: center;
+    padding: 0;
+    padding-left: 20px;
+  }
+
+  .wrapper {
+    margin: 0;
+    padding: 20px;
+  }
+
+  figure {
+    display: none;
   }
 }
