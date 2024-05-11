@@ -1,27 +1,78 @@
 .btn-selected {
-    background-color: #8796a6;
-    color: #fff;
+  background-color: #8796a6;
+  color: #fff;
 }
 
 /* Para ocultar las flechas de incremento y decremento en los inputs de tipo number */
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-input[type=number] {
-    -moz-appearance: textfield;
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 .zoom-effect {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 .zoom-effect img {
-    transition: transform 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .zoom-effect:hover img {
-    transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+#displayGeneral {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#DisplayImgProducto {
+  width: 50%;
+}
+
+#OpcionesCompra {
+  width: 50%;
+}
+
+#OpcionesCompra2 {
+  width: 50%;
+}
+
+@media only screen and (max-width: 961px) {
+  #displayGeneral {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #DisplayImgProducto {
+    width: 100%;
+  }
+
+  #OpcionesCompra {
+    width: 100%;
+  }
+
+  #OpcionesCompra2 {
+    width: 100%;
+  }
+
+  #movil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #DetallesArticulo1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }
