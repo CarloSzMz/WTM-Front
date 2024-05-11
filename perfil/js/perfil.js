@@ -651,16 +651,17 @@ function rellenarDivCarrito(productos) {
     });
 
     cadena += `</table>
-    <a href="./pasarela/pasarela.html" class="text-decoration-none">
-      <button type="button" class="btn btn-outline-dark d-flex flex-column align-items-center " style="margin-left:40%">
+      <button id="miBoton" class="btn btn-outline-dark d-flex flex-column align-items-center ">
         Hacer pedido <i class="gg-external mt-2"></i>
       </button>
-    </a>
 `;
 
     $("#productosCarrito").empty().append(cadena);
     //console.log("se rellena carrito");
-
+    $("#productosCarrito").on("click", "#miBoton", function () {
+      // Cambiar la ubicación de la ventana
+      window.location.href = "./pasarela/pasarela.html";
+    });
     // Agregar event listener a cada input
     $(".cantidadProd").each(function () {
       $(this).on("blur", function (event) {

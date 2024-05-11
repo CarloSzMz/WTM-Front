@@ -1,0 +1,66 @@
+/* Para ocultar las flechas de incremento y decremento en los inputs de tipo number */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+#InformacionUsuario {
+  display: flex;
+  flex-direction: row;
+}
+
+#DatosPerfil {
+  width: 50%;
+  background-color: #d8d8d8;
+}
+
+#completaperfil {
+  width: 50%;
+  background-color: #d8d8d8;
+}
+
+#productosCarrito {
+  width: 50%;
+}
+
+#miBoton {
+  margin-left: 40%;
+}
+
+#pedidosusuario {
+  width: 50%;
+}
+
+@media only screen and (max-width: 961px) {
+  #InformacionUsuario {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #DatosPerfil {
+    width: 90%;
+    margin-right: 20px;
+  }
+
+  #completaperfil {
+    width: 90%;
+    background-color: #d8d8d8;
+  }
+
+  #productosCarrito {
+    width: 100%;
+  }
+
+  #miBoton {
+    margin-left: 33%;
+  }
+
+  #pedidosusuario {
+    width: 100%;
+  }
+}
