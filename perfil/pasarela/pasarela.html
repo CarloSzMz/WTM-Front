@@ -12,6 +12,8 @@
         <!--Icono-->
         <link href="https://unpkg.com/css.gg@2.0.0/icons/css/shopping-cart.css" rel="stylesheet">
         <link href="https://unpkg.com/css.gg@2.0.0/icons/css/home.css" rel="stylesheet">
+        <!--Custom CSS-->
+        <link rel="stylesheet" href="./styles/pasarela.css">
         <title>WTM</title>
     </head>
     <body>
@@ -45,120 +47,123 @@
                 </div>
             </div>
         </nav>
-        <div class="container d-flex flex-row justify-content-center">
-            <div class="w-50 mt-4 d-flex flex-column mx-3">
-                <div class="d-flex flex-column">
-                    <div class="container rounded mt-2 p-3">
-                        <h4 class="fw-bold">Dirección de Facturación</h4>
-                        <div class="bg-secondary-subtle container rounded mt-3 p-3">
-                            <div class="d-flex">
-                                <div class="w-50" style="margin-right: 7px;">
-                                    <label class="w-100">
-                                        <input
-                                            type="text"
-                                            placeholder="Nombre Completo"
-                                            class="w-100 rounded p-2"
-                                            id="nombreCompletoInput"
-                                        >
-                                    </label>
+        <div class="container justify-content-center" id="ContenedorPrincipal">
+            <div class="mt-4 d-flex flex-column mx-3" id="FacturacionPago">
+                <div class="rounded mt-2 " id="Facturacion">
+                    <h4 class="fw-bold">Dirección de Facturación</h4>
+                    <div class="bg-secondary-subtle container rounded mt-3 p-3">
+                        <div class="d-flex">
+                            <div class="w-50" style="margin-right: 7px;">
+                                <label class="w-100">
+                                    <input
+                                        type="text"
+                                        placeholder="Nombre Completo"
+                                        class="w-100 rounded p-2"
+                                        id="nombreCompletoInput"
+                                    >
+                                </label>
+                            </div>
+                            <div class="w-50">
+                                <label class="w-100">
+                                    <input
+                                        type="text"
+                                        placeholder="Dirección de Facturación"
+                                        class="w-100 rounded p-2"
+                                        id="DireccionInput"
+                                    >
+                                </label>
+                            </div>
+                        </div>
+                        <label class="w-100 mt-2">
+                            <input
+                                type="text"
+                                placeholder="Provincia"
+                                class="w-100 rounded p-2"
+                                id="ProvinciaInput"
+                            >
+                        </label>
+                    </div>
+                </div>
+                <div class="rounded mt-4" id="Facturacion2">
+                    <h4 class="fw-bold"> Métodos de pago</h4>
+                    <div class="bg-secondary-subtle mt-3 container p-3 rounded" id="tarjetaDivVisa">
+                        <div
+                            class="d-flex align-items-center"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#contenidoTarjeta"
+                            aria-expanded="false"
+                            aria-controls="contenidoTarjeta"
+                        >
+                            <div class="bg-light d-flex align-items-center justify-content-center" style="background-color: #fff; 
+                            border-radius: 7px; 
+                            height: 60px; 
+                            margin-right: 30px; 
+                            width: 94px; 
+                            background-repeat: no-repeat;">
+                                <img src="https://www.instant-gaming.com/themes/igv2/images/icons/payments/icon-mcvisa.svg" alt="imagen visa y mastercard" width="70px">
+                            </div>
+                            <span class="fw-bold fs-6">Tarjeta</span>
+                        </div>
+                        <div class="collapse border border-info rounded p-3 mt-3 shadow" id="contenidoTarjeta">
+                            <div class="d-flex flex-column mt-2">
+                                <label>Número de tarjeta</label>
+                                <input type="text" placeholder="•••• •••• •••• ••••" class="rounded w-100 p-2">
+                            </div>
+                            <div id="datostarjeta">
+                                <div class="d-flex flex-column mt-2" id="inputsfecha" style="margin-right: 10px;">
+                                    <label id="fechaex">Fecha de Expiración</label>
+                                    <input
+                                        type="text"
+                                        placeholder="MM / YY"
+                                        class="rounded p-2"
+                                        id="valorFechaEx"
+                                    >
                                 </div>
-                                <div class="w-50">
-                                    <label class="w-100">
-                                        <input
-                                            type="text"
-                                            placeholder="Dirección de Facturación"
-                                            class="w-100 rounded p-2"
-                                            id="DireccionInput"
-                                        >
-                                    </label>
+                                <div class="d-flex flex-column mt-2 w-50">
+                                    <label>CVV</label>
+                                    <input type="text" placeholder="CVC" class="rounded p-2">
                                 </div>
                             </div>
-                            <label class="w-100 mt-2">
-                                <input
-                                    type="text"
-                                    placeholder="Provincia"
-                                    class="w-100 rounded p-2"
-                                    id="ProvinciaInput"
-                                >
-                            </label>
+                            <div class="d-flex flex-column mt-2">
+                                <label>Titular de la tarjeta</label>
+                                <input type="text" placeholder="F. García" class="rounded p-2">
+                            </div>
                         </div>
                     </div>
-                    <div class="container rounded mt-2 p-3">
-                        <h4 class="fw-bold"> Métodos de pago</h4>
-                        <div class="bg-secondary-subtle mt-3 container p-3 rounded" id="tarjetaDivVisa">
-                            <div
-                                class="d-flex align-items-center"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#contenidoTarjeta"
-                                aria-expanded="false"
-                                aria-controls="contenidoTarjeta"
-                            >
-                                <div class="bg-light d-flex align-items-center justify-content-center" style="background-color: #fff; 
-                            border-radius: 7px; 
-                            height: 60px; 
-                            margin-right: 30px; 
-                            width: 94px; 
-                            background-repeat: no-repeat;">
-                                    <img src="https://www.instant-gaming.com/themes/igv2/images/icons/payments/icon-mcvisa.svg" alt="imagen visa y mastercard" width="70px">
-                                </div>
-                                <span class="fw-bold fs-6">Tarjeta</span>
-                            </div>
-                            <div class="collapse border border-info rounded p-3 mt-3 shadow" id="contenidoTarjeta">
-                                <div class="d-flex flex-column mt-2">
-                                    <label>Número de tarjeta</label>
-                                    <input type="text" placeholder="•••• •••• •••• ••••" class="rounded w-100 p-2">
-                                </div>
-                                <div class="d-flex flex-row">
-                                    <div class="d-flex flex-column mt-2 w-50" style="margin-right: 10px;">
-                                        <label>Fecha de Expiración</label>
-                                        <input type="text" placeholder="MM / YY" class="rounded p-2">
-                                    </div>
-                                    <div class="d-flex flex-column mt-2 w-50">
-                                        <label>CVV</label>
-                                        <input type="text" placeholder="CVC" class="rounded p-2">
-                                    </div>
-                                </div>
-                                <div class="d-flex flex-column mt-2">
-                                    <label>Titular de la tarjeta</label>
-                                    <input type="text" placeholder="F. García" class="rounded p-2">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bg-secondary-subtle mt-2 container p-3 rounded" id="tarjetaDivBizum">
-                            <div class="d-flex align-items-center">
-                                <div class="bg-light d-flex align-items-center justify-content-center" style="background-color: #fff; 
+                    <div class="bg-secondary-subtle mt-2 container p-3 rounded" id="tarjetaDivBizum">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-light d-flex align-items-center justify-content-center" style="background-color: #fff; 
                             background-position: 50%;
                             border-radius: 7px; 
                             height: 60px; 
                             width: 94px; 
                             margin-right: 30px; 
                             background-repeat: no-repeat;">
-                                    <img src="https://www.instant-gaming.com/themes/igv2/images/icons/payments/icon-bizum.svg" alt="imagen BIZUM" width="70px">
-                                </div>
-                                <span class="fw-bold fs-6">Bizum</span>
+                                <img src="https://www.instant-gaming.com/themes/igv2/images/icons/payments/icon-bizum.svg" alt="imagen BIZUM" width="70px">
                             </div>
+                            <span class="fw-bold fs-6">Bizum</span>
                         </div>
-                        <div class="bg-secondary-subtle mt-2 container p-3 rounded" id="tarjetaDivPaypal">
-                            <div class="d-flex align-items-center">
-                                <div class="bg-light d-flex align-items-center justify-content-center" style="background-color: #fff; 
+                    </div>
+                    <div class="bg-secondary-subtle mt-2 container p-3 rounded" id="tarjetaDivPaypal">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-light d-flex align-items-center justify-content-center" style="background-color: #fff; 
                             background-position: 50%;
                             border-radius: 7px; 
                             height: 60px; 
                             width: 94px; 
                             margin-right: 30px; 
                             background-repeat: no-repeat;">
-                                    <img src="https://www.instant-gaming.com/themes/igv2/images/icons/payments/icon-paypal.svg" alt="imagen PAYPAL" width="70px">
-                                </div>
-                                <span class="fw-bold fs-6">Paypal</span>
+                                <img src="https://www.instant-gaming.com/themes/igv2/images/icons/payments/icon-paypal.svg" alt="imagen PAYPAL" width="70px">
                             </div>
+                            <span class="fw-bold fs-6">Paypal</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="w-25 mt-4 d-flex flex-column mx-3 mt-5">
+            <div class="mt-5 d-flex flex-column mx-3" id="ResumenPago">
                 <h4 class="fw-bold">Resumen</h4>
                 <div id="ProductosPedido" class="bg-secondary-subtle rounded p-2 mt-2"></div>
-                <div class="container bg-secondary rounded p-4 mt-5">
+                <div class="bg-secondary rounded p-4 mt-5" id="RealizaPago">
                     <div class="d-flex flex-row">
                         <span class="w-100  text-white">IVA(21%):</span>
                         <span id="SinIVA" class="float-end  text-light">0€</span>

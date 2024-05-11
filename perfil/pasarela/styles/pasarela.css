@@ -1,0 +1,58 @@
+#ContenedorPrincipal {
+  display: flex;
+  flex-direction: row;
+}
+#FacturacionPago {
+  width: 50%;
+}
+#ResumenPago {
+  width: 25%;
+}
+#datostarjeta {
+  display: flex;
+  flex-direction: row;
+}
+#inputsfecha {
+  width: 50%;
+}
+
+@media only screen and (max-width: 961px) {
+  #ContenedorPrincipal {
+    display: flex;
+    flex-direction: column;
+  }
+  #FacturacionPago {
+    width: 100%;
+    margin-right: 20px;
+  }
+  #Facturacion {
+    margin-right: 20px;
+  }
+  #Facturacion2{
+    margin-right: 20px;
+
+  }
+  #datostarjeta {
+    display: flex;
+    flex-direction: column;
+  }
+  #inputsfecha {
+    width: 100%;
+  }
+  #fechaex {
+    width: 100%;
+  }
+  #valorFechaEx{
+    width: 50%;
+  }
+  #ResumenPago {
+    width: 100%;
+    margin-right: 20px;
+  }
+  #ProductosPedido {
+    margin-right: 20px;
+  }
+  #RealizaPago {
+    margin-right: 20px;
+  }
+}
