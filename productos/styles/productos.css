@@ -1,3 +1,7 @@
+body {
+  height: 100vh;
+}
+
 #mostrarCamisetas {
   width: 100%;
 }
@@ -16,42 +20,25 @@
   flex-direction: row;
 }
 
-#ropaSubmenuLink {
-  display: flex;
-  flex-direction: row;
+#navbar {
+  width: 25%;
+}
+
+#Contenido {
   width: 100%;
-  justify-content: space-between;
-  align-items: center;
 }
 
-#camisetaIcon {
-  display: none;
-}
-
-#Slabel {
-  display: none;
-}
-
-#Clabel {
-  display: none;
-}
-
-#eurolabel {
-  display: none;
-}
-
-#navLateral {
-  height: 100vh;
-  border-right: 1px solid black;
+.imagen_categorias {
+  object-fit: cover;
+  /* Escalar la imagen manteniendo la relaciÃ³n de aspecto y cortando el exceso */
+  width: 100%;
+  /* Ocupar todo el ancho del contenedor */
+  height: 100%;
+  /* Ocupar todo el alto del contenedor */
 }
 
 @media only screen and (max-width: 961px) {
-
-  #MuestraProductos{
-    padding-left: 18%;
-  }
-
-  #hrNav {
+  #navbar {
     width: 100%;
   }
 
@@ -73,60 +60,8 @@
     flex-direction: column;
   }
 
-  #navLateral {
-    height: auto;
-    width: 17%;
-    border: none;
-    position: fixed;
-  }
-
-  #Destacadas {
-    display: none;
-  }
-
-  #ropaFilter {
-    display: none;
-  }
-
-  #ropaSubmenuLink {
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-  }
-
-  #pastafilter{
-    display: none;
-  }
-
-  #camisetaIcon {
-    display: block;
-  }
-
-  #SudaderasLabel {
-    display: none;
-  }
-
-  #Slabel {
-    display: block;
-  }
-
-  #CamisetaLabel {
-    display: none;
-  }
-
-  #Clabel {
-    display: block;
-  }
-
-  #PrecioLabel {
-    display: none;
-  }
-
-  #eurolabel {
-    display: block;
-  }
-
-  #displayprecios {
-    font-size: small;
+  #Contenido {
+    overflow: hidden;
+    width: 100%;
   }
 }

@@ -146,7 +146,7 @@ function carritoOffCanvas() {
             <p>
             ${producto.NombreArticulo} 
             <br> 
-            ${producto.total / producto.quantity}€
+            ${producto.total / producto.quantity}â‚¬
             </p>
             <p>Unidades: <strong>${producto.quantity}</strong></p>
           </div>
@@ -165,7 +165,7 @@ function carritoOffCanvas() {
     cad += `
       </div>
       <hr style="border-top: 1px dotted #000; width:100%;">
-      <p class="w-100">Total (IVA Incluido) <span class="float-end h3">${precioTotal}€</span></p>
+      <p class="w-100">Total (IVA Incluido) <span class="float-end h3">${precioTotal}â‚¬</span></p>
       <button class="w-100 btn btn-outline-secondary rounded-2"> 
       <a href="../perfil/perfil.html" class="text-decoration-none text-dark">Ver artículos en tu Cesta</a>
       </button>
@@ -182,9 +182,6 @@ function cargarProductos() {
     type: "POST",
     url: url_site + `/api/productos`,
     dataType: "json",
-    data: {
-      filter: null,
-    },
     success: function (response) {
       data = JSON.parse(JSON.stringify(response));
       productos = data.data;
@@ -227,8 +224,9 @@ function distribuirProductosCamiestas() {
     cadena += `
     <div class="card m-2" style="width: 18rem;" onclick="envioProductos(${articulo.id})">
         <img src="../img/productos/${articulo.url_img}" class="card-img-top imagen_categorias" alt="img camiseta" >
-        <div class="card-body d-flex justify-content-center">
+        <div class="card-body d-flex flex-column justify-content-center">
           <h5>${articulo.name}</h5>
+          <p class="text-secondary">${articulo.Precio}€</p>
         </div>
     </div>
     `;
@@ -243,8 +241,9 @@ function distribuirProductosSudaderas() {
     cadena += `
     <div class="card m-2" style="width: 18rem;" onclick="envioProductos(${articulo.id})">
         <img src="../img/productos/${articulo.url_img}" class="card-img-top imagen_categorias" alt="img sudadera" >
-        <div class="card-body d-flex justify-content-center">
+        <div class="card-body d-flex flex-column justify-content-center">
           <h5>${articulo.name}</h5>
+          <p class="text-secondary">${articulo.Precio}€</p>
         </div>
     </div>
     `;
