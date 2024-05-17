@@ -121,12 +121,15 @@ function cargarCarrito() {
         });
 
         cad += `
-            </div>
-            <hr style="border-top: 1px dotted #000; width:100%;">
-            <p class="w-100">Total (IVA Incluido) <span class="float-end h3">${precioTotal}€</span></p>
-            <button class="w-100 btn btn-outline-secondary rounded-2"> 
-            <a href="../perfil/perfil.html" class="text-decoration-none text-dark">Ver artículos en tu Cesta</a>
-            </button>
+        </div>
+        <hr style="border-top: 1px dotted #000; width:100%;">
+        <p class="w-100">Total (IVA Incluido) <span class="float-end h3">${precioTotal}€</span></p>
+        <button class="w-100 btn btn-outline-secondary rounded-2"> 
+        <a href="../perfil/cesta/cesta.html" class="text-decoration-none text-dark">Ver artículos en tu Cesta</a>
+        </button>
+        <button class="w-100 btn btn-outline-secondary rounded-2 mt-3"> 
+        <a href="../perfil/pasarela/pasarela.html" class="text-decoration-none text-dark">Realizar Pedido</a>
+        </button>
             `;
         $("#bodyCarrito").append(cad);
       }

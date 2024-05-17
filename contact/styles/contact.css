@@ -1,4 +1,4 @@
-button {
+#boton {
   font-family: inherit;
   font-size: 20px;
   background: royalblue;
@@ -14,31 +14,31 @@ button {
   cursor: pointer;
 }
 
-button span {
+#boton span {
   display: block;
   margin-left: 0.3em;
   transition: all 0.3s ease-in-out;
 }
 
-button svg {
+#boton svg {
   display: block;
   transform-origin: center center;
   transition: transform 0.3s ease-in-out;
 }
 
-button:hover .svg-wrapper {
+#boton:hover .svg-wrapper {
   animation: fly-1 0.6s ease-in-out infinite alternate;
 }
 
-button:hover svg {
+#boton:hover svg {
   transform: translateX(1.2em) rotate(45deg) scale(1.1);
 }
 
-button:hover span {
+#boton:hover span {
   transform: translateX(5em);
 }
 
-button:active {
+#boton:active {
   transform: scale(0.95);
 }
 
@@ -55,9 +55,11 @@ button:active {
 #inputNombre {
   width: 50%;
 }
+
 #inputApe {
   width: 50%;
 }
+
 #ContenedorForm {
   width: 50%;
 }
@@ -66,17 +68,21 @@ button:active {
   button {
     font-size: 12px;
   }
+
   #Nombres {
     flex-direction: column;
   }
+
   #inputNombre {
     width: 100%;
     margin-top: 10px;
   }
+
   #inputApe {
     width: 100%;
     margin-top: 10px;
   }
+
   #ContenedorForm {
     width: 75%;
   }

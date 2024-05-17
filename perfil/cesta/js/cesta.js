@@ -1,6 +1,8 @@
 let tokenusu = sessionStorage.getItem("tokenusu");
 let carrito = [];
 let btnCompra = document.getElementById("btnCompra");
+let btnLogout = document.getElementById("btnlogout");
+
 let basquet_id;
 let totalPrice = 0;
 
@@ -159,3 +161,23 @@ function asignarFunciones() {
     });
   });
 }
+
+//BOTON QUE REALIZA EL CIERRE DE SESION
+btnLogout.addEventListener("click", () => {
+  //console.log("chauuuuuu");
+  sessionStorage.removeItem("tokenusu");
+
+  $.ajax({
+    type: "GET",
+    url: url_site + `/api/logout`,
+    dataType: "json",
+    headers: {
+      Authorization: "Bearer " + tokenusu,
+    },
+    success: function (response) {
+      //console.log(response);
+
+      window.location.replace("../../index.html");
+    },
+  });
+});
