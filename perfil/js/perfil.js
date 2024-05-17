@@ -5,6 +5,7 @@ let pedidos = [];
 let btnLogout = document.getElementById("btnlogout");
 let btnCompra = document.getElementById("confirmarCompra");
 let divcarrito = document.getElementById("productosCarrito");
+let btnCesta = document.getElementById("btnirCesta");
 let url_site = "http://52.205.64.156";
 
 //console.log(tokenusu);
@@ -57,7 +58,6 @@ function cargarCarrito() {
       //console.log(carrito);
 
       carritoOffCanvas();
-      rellenarDivCarrito(carrito.length);
       deleteprodCarritoNose();
     },
   });
@@ -593,106 +593,9 @@ function rellenarCambioPerfil() {
   });
 }
 
-//SE RELLENA EL DIV CON LOS PROD. DEL CARRITO
-function rellenarDivCarrito(productos) {
-  cadena = ``;
-
-  if (productos == 0) {
-    cadena += `
-    <div class="d-flex flex-column align-items-center mt-2">
-    <button class="btn btn-dark " style="border-radius: 50%; width: 50px; height: 50px; pointer-events: none;">
-         <i class="fa-solid fa-magnifying-glass text-light"></i>
-      </button>
-      <h5>Tu carrito está vacío</h5>
-      <button class="btn btn-info rounded-3">
-          <a href="../index.html" class="text-decoration-none text-dark">Explorar Articulos</a>
-      </button>  
-    </div>
-       
-    
-    `;
-    $("#productosCarrito").append(cadena);
-  } else {
-    cadena += `
-      <table class="table table-striped table-hover mt-2" style="border-radius:10px; overflow:hidden;">
-        <th>Artículos seleccionados</th>
-        <th class=" text-center">Cantidad</th>
-        <th class=" text-center">Total</th>
-    `;
-
-    carrito.forEach((prod) => {
-      cadena += `
-      <tr>
-        <td class="d-flex">
-            <p> <img src="../img/productos/${
-              prod.ImgArticulo
-            }" alt="imgenArticulo" width="50px" class="rounded mr-5"></p>
-            <p style="padding-left: 20px">
-                <span class="fs-5"> ${prod.NombreArticulo}</span><br>
-                <span class="text-secondary fs-6">${
-                  prod.total / prod.quantity
-                }€/ud (IVA incluido)
-            </p>
-        </td>
-        <td class="align-middle text-secondary text-center">
-          <form >
-            <input 
-              id="cantidadProd${prod.IdCesta}" 
-              class="text-center cantidadProd" 
-              type="number" 
-              value="${prod.quantity}" 
-              placeholder="${prod.quantity}"  
-              data-cesta-id="${prod.IdCesta}"
-              style="border-radius:50px; width:80px;">
-          </form>
-        <td class="align-middle text-center">${prod.total}€</td>
-    </tr>
-      `;
-    });
-
-    cadena += `</table>
-      <button id="miBoton" class="btn btn-outline-dark d-flex flex-column align-items-center ">
-        Hacer pedido <i class="gg-external mt-2"></i>
-      </button>
-`;
-
-    $("#productosCarrito").empty().append(cadena);
-    //console.log("se rellena carrito");
-    $("#productosCarrito").on("click", "#miBoton", function () {
-      // Cambiar la ubicación de la ventana
-      window.location.href = "./pasarela/pasarela.html";
-    });
-    // Agregar event listener a cada input
-    $(".cantidadProd").each(function () {
-      $(this).on("blur", function (event) {
-        // Acciones que deseas realizar cuando el valor del input cambia
-        //console.log("El valor del input ha cambiado:", event.target.value);
-        //console.log("id cesta:", $(this).data("cesta-id"));
-        var idcesta = $(this).data("cesta-id");
-        try {
-          $.ajax({
-            type: "PUT",
-            url: url_site + `/api/update_carrito`,
-            dataType: "json",
-            headers: {
-              Authorization: "Bearer " + tokenusu,
-            },
-            data: {
-              basquet_id: idcesta,
-              quantity: event.target.value,
-            },
-            success: function (response) {
-              //console.log(response);
-              cargarCarrito();
-            },
-          });
-        } catch (error) {
-          console.log(error);
-        }
-      });
-    });
-  }
-}
+btnCesta.addEventListener("click", () => {
+  window.location.replace("./cesta/cesta.html");
+});
 
 //BOTON QUE REALIZA EL CIERRE DE SESION
 btnLogout.addEventListener("click", () => {
