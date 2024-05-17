@@ -180,7 +180,7 @@ function rellenarDivCobro() {
   });
   IVA = total_price * 0.21;
   $("#ProductosPedido").html(cadena);
-  $("#SinIVA").html(IVA + "€");
+  $("#SinIVA").html(IVA.toFixed(2) + "€");
   $("#TotalPrice").html(total_price.toFixed(2) + "€");
 }
 
