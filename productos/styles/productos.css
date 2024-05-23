@@ -13,11 +13,13 @@ body {
 #productosCamisetasDiv {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
 }
 
 #productosSudaderasDiv {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
 }
 
 #navbar {

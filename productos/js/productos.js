@@ -179,7 +179,7 @@ function carritoOffCanvas() {
 
 function cargarProductos() {
   $.ajax({
-    type: "POST",
+    type: "GET",
     url: url_site + `/api/productos`,
     dataType: "json",
     success: function (response) {
@@ -222,7 +222,7 @@ function distribuirProductosCamiestas() {
   var cadena = ``;
   productosCamisteas.forEach((articulo) => {
     cadena += `
-    <div class="card m-2" style="width: 18rem;" onclick="envioProductos(${articulo.id})">
+    <div class="card m-2" style="width: 18rem; cursor:pointer;" onclick="envioProductos(${articulo.id})">
         <img src="../img/productos/${articulo.url_img}" class="card-img-top imagen_categorias" alt="img camiseta" >
         <div class="card-body d-flex flex-column justify-content-center">
           <h5>${articulo.name}</h5>
@@ -239,7 +239,7 @@ function distribuirProductosSudaderas() {
   var cadena = ``;
   productosSudaderas.forEach((articulo) => {
     cadena += `
-    <div class="card m-2" style="width: 18rem;" onclick="envioProductos(${articulo.id})">
+    <div class="card m-2" style="width: 18rem; cursor:pointer;" onclick="envioProductos(${articulo.id})">
         <img src="../img/productos/${articulo.url_img}" class="card-img-top imagen_categorias" alt="img sudadera" >
         <div class="card-body d-flex flex-column justify-content-center">
           <h5>${articulo.name}</h5>
