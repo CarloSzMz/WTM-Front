@@ -8,6 +8,8 @@
     width: 50%;
     display: flex;
     flex-direction: column;
+    margin-left: 10%;
+    margin-right: 3%;
 }
 
 #contenedorPago {
@@ -58,6 +60,8 @@
 
     #contenedorProd {
         width: 100%;
+        margin-left: 1rem;
+        margin-right: 1rem;
     }
 
     #contenedorPago {
