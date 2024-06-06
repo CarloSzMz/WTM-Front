@@ -2,8 +2,11 @@ let url_site = "http://52.205.64.156";
 let tokenusu = sessionStorage.getItem("tokenusu");
 let carrito = [];
 let datosUser = [];
+let descuentos = [];
 let total_price = 0;
+let precio_descontado = 0
 let btnCompra = document.getElementById("btnCompra");
+let btnDescuento = document.getElementById("btndescuento");
 
 //CAMBIAR BORDE DE LAS CAJAS
 $(document).ready(function () {
@@ -97,9 +100,8 @@ function carritoOffCanvas() {
       cad += `
       <div class="d-flex flex-row w-100">
         <div class="p-2 w-25">
-          <img src="../../img/productos/${
-            producto.ImgArticulo
-          }" alt="imgenArticulo" width="50px" class="rounded mr-5">
+          <img src="../../img/productos/${producto.ImgArticulo
+        }" alt="imgenArticulo" width="50px" class="rounded mr-5">
         </div>
         <div class="w-50">
           <p>
@@ -209,15 +211,18 @@ function cargarUser() {
   });
 }
 
+
+
 //BOTON QUE REALIZA LA COMPRA
 btnCompra.addEventListener("click", (event) => {
   event.preventDefault();
 
-  //calcular precio total
-  let precio_total = 0;
-  carrito.forEach((element) => {
-    precio_total += element.total;
-  });
+
+  if (precio_descontado != 0) {
+    precio_total = precio_descontado.toFixed(2);
+  } else {
+    precio_total = total_price.toFixed(2);
+  }
 
   //Copmrobar que hay datos de facturacion
   if (
@@ -225,7 +230,7 @@ btnCompra.addEventListener("click", (event) => {
     $("#ProvinciaInput").val() == null
   ) {
     alert("Se necesitan los datos de facturacción");
-    } else {
+  } else {
     //confirmar creacion de pedido
     var confirmacion = confirm(
       "¿Estás seguro de que deseas realizar la compra?"
@@ -252,5 +257,68 @@ btnCompra.addEventListener("click", (event) => {
     }
   }
 });
+
+btnDescuento.addEventListener('click', () => {
+
+  var nombreDescuento = $("#inputdescuento").val();
+  //llamada
+  $.ajax({
+    type: "GET",
+    url: url_site + `/api/get_discount`,
+    dataType: "json",
+    data: {
+      name: nombreDescuento,
+    },
+    success: function (response) {
+      var exists = descuentos.some(function (descuento) {
+        return descuento.id === response.data.id;
+      });
+
+      if (!exists) {
+        // Añadir el descuento al array si no está ya presente
+        descuentos.push(response.data);
+        rellenarDivDescuentos();
+        calcularDescuentos();
+      }
+      console.log(descuentos);
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      if (jqXHR.status === 404) {
+        console.log("Descuento no válido");
+      } else {
+        console.log("Error: " + textStatus + " - " + errorThrown);
+      }
+    }
+  });
+
+});
+
+function rellenarDivDescuentos() {
+  var cadena = ``;
+  descuentos.forEach(descuento => {
+    cadena += `
+    <div id="datosDescuento">
+      <span class="text-secondary">${descuento.name}</span>
+      <span class="text-secondary float-end">${descuento.discount}%</span>
+    </div>
+    <hr style="border-top: 1px dotted #000; width:100%;" id="hrdescuentos">
+    `;
+  });
+  $("#descuentosaplicados").html(cadena);
+
+}
+
+function calcularDescuentos() {
+  totaldescuento = 0
+  descuentos.forEach(element => {
+    totaldescuento += element.discount;
+  });
+  descontado = ((total_price * totaldescuento) / 100).toFixed(2);
+  precio_descontado = total_price - descontado
+  descuentoIVA = precio_descontado * 0.21
+
+  $("#SinIVA").html(descuentoIVA.toFixed(2) + "€");
+  $("#TotalPrice").html(precio_descontado.toFixed(2) + "€");
+}
 
 window.onload = cargarDatos();
